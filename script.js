@@ -5,24 +5,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const rightBtn = document.querySelector('.right-btn');
     let currentPanel = 0;
 
-    // Initialize - show first panel
     showPanel(currentPanel);
 
     function showPanel(index) {
-        // Hide all panels
+        
         panels.forEach(panel => {
             panel.classList.remove('active');
         });
 
-        // Show selected panel
         panels[index].classList.add('active');
 
-        // Update navigation
+       
         navLinks.forEach(link => {
             link.classList.remove('active');
         });
 
-        // Update both desktop and mobile nav links
         document.querySelectorAll(`.nav-link[data-panel="${index}"]`).forEach(link => {
             link.classList.add('active');
         });
@@ -33,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         window.scrollTo(0, 0);
     }
 
-    // Navigation click handlers
+   
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
@@ -42,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Arrow button handlers
     leftBtn.addEventListener('click', function () {
         const newPanel = (currentPanel - 1 + panels.length) % panels.length;
         showPanel(newPanel);
@@ -53,13 +49,13 @@ document.addEventListener('DOMContentLoaded', function () {
         showPanel(newPanel);
     });
 
-    // Keyboard navigation
+    
     document.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowLeft') leftBtn.click();
         if (e.key === 'ArrowRight') rightBtn.click();
     });
 
-    // Hide arrows on mobile
+   
     function checkScreenSize() {
         if (window.innerWidth <= 768) {
             leftBtn.style.display = 'none';
