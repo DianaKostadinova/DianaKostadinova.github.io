@@ -163,7 +163,6 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
-/* Panel Styles */
 .content-panel {
     position: absolute;
     top: 0;
@@ -221,7 +220,7 @@ body {
     line-height: 1.4;
 }
 
-/* Navigation Buttons */
+
 .panel-button {
     position: fixed;
     top: 50%;
@@ -256,7 +255,7 @@ body {
     right: 10px;
 }
 
-/* Content Styles */
+
 .info-container {
     display: flex;
     flex-direction: column;
@@ -293,7 +292,7 @@ body {
     text-align: center;
 }
 
-/* Contact Panel Styles */
+
 .contact-panel {
     background: rgba(10, 10, 10, 0.9);
     color: var(--terminal-green);
@@ -362,7 +361,7 @@ body {
     padding: 0.3rem;
 }
 
-/* Mobile Navigation */
+
 .mobile-nav {
     display: none;
     position: fixed;
@@ -380,7 +379,6 @@ body {
         justify-content: space-around;
     }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
     .panel-button {
         display: none;
