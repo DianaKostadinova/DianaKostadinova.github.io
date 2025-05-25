@@ -8,29 +8,18 @@ document.addEventListener('DOMContentLoaded', function () {
     showPanel(currentPanel);
 
     function showPanel(index) {
-        
-        panels.forEach(panel => {
-            panel.classList.remove('active');
-        });
-
+        panels.forEach(panel => panel.classList.remove('active'));
         panels[index].classList.add('active');
 
-       
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-        });
-
+        navLinks.forEach(link => link.classList.remove('active'));
         document.querySelectorAll(`.nav-link[data-panel="${index}"]`).forEach(link => {
             link.classList.add('active');
         });
 
         currentPanel = index;
-
-        // Scroll to top
         window.scrollTo(0, 0);
     }
 
-   
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
             e.preventDefault();
@@ -49,13 +38,11 @@ document.addEventListener('DOMContentLoaded', function () {
         showPanel(newPanel);
     });
 
-    
     document.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowLeft') leftBtn.click();
         if (e.key === 'ArrowRight') rightBtn.click();
     });
 
-   
     function checkScreenSize() {
         if (window.innerWidth <= 768) {
             leftBtn.style.display = 'none';
@@ -68,6 +55,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.addEventListener('resize', checkScreenSize);
     checkScreenSize();
+
+  
+    const typewriter = document.getElementById("typewriter");
+    const text = "Diana Kostadinova";
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            typewriter.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(type, 100);
+        }
+    }
+
+    type();
 });
 
 function copyToClipboard(text) {
