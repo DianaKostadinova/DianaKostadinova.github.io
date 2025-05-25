@@ -1,9 +1,9 @@
-﻿﻿
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="styles.css">
-
+  
     <meta charset="UTF-8">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +13,11 @@
 
 </head>
 <body>
+   
+
     <script src="script.js"></script>
     <header class="header">
-        <h1>Diana Kostadinova</h1>
+        <h1 id="typewriter"></h1>
         <div class="tagline">DEV | CUBER | RESEARCHER</div>
         <div class="nav-links">
             <a href="#" class="nav-link active" data-panel="0">About</a>
@@ -38,7 +40,6 @@
             </div>
         </div>
 
-   
         <div class="content-panel active" id="panel0">
             <div class="panel-content">
                 <h2 class="panel-title">> ABOUT_ME</h2>
@@ -68,7 +69,6 @@
             </div>
         </div>
 
-       
         <div class="content-panel" id="panel1">
             <div class="panel-content">
                 <h2 class="panel-title">> SKILLS</h2>
@@ -84,16 +84,10 @@
                     <div class="info-item">
                         <i class="fas fa-search icon"></i>
                         <span>
-                            Academic Researcher |
+                            Academic Researcher
                             <div class="research-links">
-                                <div class="research-link-item">
-                                    <i class="fab fa-github"></i>
-                                    <a href="https://github.com/DianaKostadinova/Research-Papers"
-                                       class="research-link"
-                                       target="_blank">
-                                        View My Research Papers on GitHub
-                                    </a>
-                                </div>
+
+
                             </div>
                         </span>
                     </div>
@@ -105,56 +99,75 @@
             </div>
         </div>
 
-        
         <div class="content-panel" id="panel2">
             <div class="panel-content">
                 <h2 class="panel-title">> PROJECTS</h2>
                 <div class="info-container">
+
                     <div class="info-item">
-                        <i class="fab fa-java icon"></i>
-                        <span>Java Sorting Visualizer</span>
+                        <i class="fas fa-keyboard icon"></i>
+                        <span>
+                            <a href="https://github.com/DianaKostadinova/TypeFstr" target="_blank" class="research-link">
+                                Type Writer Game
+                            </a>
+                        </span>
                     </div>
+
+
                     <div class="info-item">
-                        <i class="fab fa-python icon"></i>
-                        <span>Python Cubing Data Scraper</span>
+                        <i class="fas fa-sun icon"></i>
+                        <span>
+                            <a href="https://github.com/DianaKostadinova/SkopjeSun" target="_blank" class="research-link">
+                                Sunny Cafe Finder App
+                            </a>
+                        </span>
                     </div>
+
                     <div class="info-item">
                         <i class="fas fa-code icon"></i>
                         <span>This Portfolio Site</span>
                     </div>
+
                 </div>
             </div>
         </div>
+
 
         <div class="content-panel" id="panel3">
             <div class="panel-content">
                 <h2 class="panel-title">> CONTACT</h2>
                 <div class="contact-panel">
                     <div class="contact-item">
-                        <div class="contact-icon phone-icon">
-                            <i class="fas fa-phone-alt"></i>
+
+                        <div class="contact-icon github-icon">
+                            <i class="fab fa-github"></i>
                         </div>
                         <div class="contact-text">
-                            <div class="contact-label">$ PHONE/WHATSAPP</div>
-                            <div class="contact-value">> +389 76 802 347</div>
+                            <div class="contact-label">$ GITHUB</div>
+                            <div class="contact-value">
+                                > <a href="https://github.com/DianaKostadinova" target="_blank">github.com/DianaKostadinova</a>
+                            </div>
                         </div>
-                        <button class="copy-btn" onclick="copyToClipboard('+38976802347')">
-                            <i class="far fa-copy"></i>
-                        </button>
+                        <a class="copy-btn" href="https://github.com/DianaKostadinova" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+>
+                    <div class="contact-item">
+                        <div class="contact-icon linkedin-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-text">
+                            <div class="contact-label">$ LINKEDIN</div>
+                            <div class="contact-value">
+                                > <a href="https://www.linkedin.com/in/diana-kostadinova-382a60364" target="_blank">linkedin.com/in/diana-kostadinova</a>
+                            </div>
+                        </div>
+                        <a class="copy-btn" href="https://www.linkedin.com/in/diana-kostadinova-382a60364" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
                     </div>
 
-                    <div class="contact-item">
-                        <div class="contact-icon email-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-text">
-                            <div class="contact-label">$ EMAIL</div>
-                            <div class="contact-value">> dkostadinova112@gmail.com</div>
-                        </div>
-                        <button class="copy-btn" onclick="copyToClipboard('dkostadinova112@gmail.com')">
-                            <i class="far fa-copy"></i>
-                        </button>
-                    </div>
 
                     <div class="contact-item">
                         <div class="contact-icon ig-icon">
