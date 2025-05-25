@@ -1,4 +1,4 @@
-﻿:root {
+:root {
     --primary: #6c5ce7;
     --secondary: #a29bfe;
     --dark-bg: #121212;
@@ -220,7 +220,6 @@ body {
     line-height: 1.4;
 }
 
-
 .panel-button {
     position: fixed;
     top: 50%;
@@ -254,7 +253,6 @@ body {
 .right-btn {
     right: 10px;
 }
-
 
 .info-container {
     display: flex;
@@ -292,7 +290,6 @@ body {
     text-align: center;
 }
 
-
 .contact-panel {
     background: rgba(10, 10, 10, 0.9);
     color: var(--terminal-green);
@@ -303,6 +300,24 @@ body {
     margin: 1rem auto;
     box-shadow: 5px 5px 0 rgba(0,0,0,0.3);
 }
+.github-icon {
+    background: var(--terminal-green);
+}
+
+.linkedin-icon {
+    background: var(--terminal-green);
+}
+.contact-value a {
+    color: var(--terminal-green);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+    .contact-value a:hover {
+        color: var(--secondary);
+        text-decoration: underline;
+    }
 
 .contact-item {
     display: flex;
@@ -361,7 +376,6 @@ body {
     padding: 0.3rem;
 }
 
-
 .mobile-nav {
     display: none;
     position: fixed;
@@ -405,5 +419,19 @@ body {
         position: relative;
         height: auto;
         min-height: calc(100vh - 120px);
+    }
+}
+#typewriter::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
     }
 }
