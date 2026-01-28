@@ -1,9 +1,31 @@
+
 document.addEventListener('DOMContentLoaded', function () {
     const panels = document.querySelectorAll('.content-panel');
     const navLinks = document.querySelectorAll('.nav-link');
     const leftBtn = document.querySelector('.left-btn');
     const rightBtn = document.querySelector('.right-btn');
     let currentPanel = 0;
+
+    document.querySelectorAll(".dropdown").forEach(item => {
+        const header = item.querySelector(".info-header");
+        const body = item.querySelector(".info-body");
+
+        header.addEventListener("click", () => {
+            const isOpen = item.classList.contains("active");
+
+            // Close all other dropdowns (optional — comment out if you want multiple open)
+            document.querySelectorAll(".dropdown").forEach(d => {
+                d.classList.remove("active");
+                d.querySelector(".info-body").style.height = "0px";
+            });
+
+            if (!isOpen) {
+                item.classList.add("active");
+                body.style.height = body.scrollHeight + "px";
+            }
+        });
+    });
+
 
     showPanel(currentPanel);
 
@@ -56,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', checkScreenSize);
     checkScreenSize();
 
-  
+
     const typewriter = document.getElementById("typewriter");
     const text = "Diana Kostadinova";
     let index = 0;
