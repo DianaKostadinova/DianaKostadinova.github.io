@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,181 +15,419 @@
 <body>
 
 
-    <script src="script.js"></script>
-    <header class="header">
-        <h1 id="typewriter"></h1>
-        <div class="tagline">DEV | CUBER | RESEARCHER</div>
+<script src="script.js"></script>
+<header class="header">
+    <h1 id="typewriter"></h1>
+    <div>Computer Science Student</div>
+   <div>Skopje, N.Macedonia</div>
+    <div class="nav-links">
+        <a href="#" class="nav-link active" data-panel="0">About</a>
+        <a href="#" class="nav-link" data-panel="1">Skills</a>
+        <a href="#" class="nav-link" data-panel="2">Projects</a>
+        <a href="#" class="nav-link" data-panel="3">Certificates</a>
+        <a href="#" class="nav-link" data-panel="4">Contact</a>
+    </div>
+</header>
+
+<div class="main-container">
+    <button class="panel-button left-btn"><i class="fas fa-chevron-left"></i></button>
+    <button class="panel-button right-btn"><i class="fas fa-chevron-right"></i></button>
+
+    <div class="mobile-nav">
         <div class="nav-links">
             <a href="#" class="nav-link active" data-panel="0">About</a>
             <a href="#" class="nav-link" data-panel="1">Skills</a>
             <a href="#" class="nav-link" data-panel="2">Projects</a>
-            <a href="#" class="nav-link" data-panel="3">Contact</a>
+            <a href="#" class="nav-link" data-panel="3">Certificates</a>
+            <a href="#" class="nav-link" data-panel="4">Contact</a>
         </div>
-    </header>
+    </div>
 
-    <div class="main-container">
-        <button class="panel-button left-btn"><i class="fas fa-chevron-left"></i></button>
-        <button class="panel-button right-btn"><i class="fas fa-chevron-right"></i></button>
-
-        <div class="mobile-nav">
-            <div class="nav-links">
-                <a href="#" class="nav-link active" data-panel="0">About</a>
-                <a href="#" class="nav-link" data-panel="1">Skills</a>
-                <a href="#" class="nav-link" data-panel="2">Projects</a>
-                <a href="#" class="nav-link" data-panel="3">Contact</a>
-            </div>
-        </div>
-
-        <div class="content-panel active" id="panel0">
-            <div class="panel-content">
-                <h2 class="panel-title">> ABOUT_ME</h2>
-                <div class="info-container">
-                    <div class="info-item">
+    <div class="content-panel active" id="panel0">
+        <div class="panel-content">
+            <h2 class="panel-title">> ABOUT_ME</h2>
+            <div class="info-container">
+                <div class="info-item dropdown">
+                    <div class="info-header">
                         <i class="fas fa-graduation-cap icon"></i>
-                        <span>Computer Science Student at FINKI, UKIM</span>
+                        <span>Computer Science Student @ FINKI, UKIM</span>
+                        <i class="fas fa-chevron-down arrow"></i>
                     </div>
-                    <div class="info-item">
-                        <i class="fas fa-globe-europe icon"></i>
-                        <span>From Skopje, North Macedonia</span>
+                    <div class="info-body">
+                        Currently focused on building <b>AI and machine learning applications</b> and exploring how intelligent systems can be used in practical, real-world scenarios.
+                        I enjoy taking ideas from concept to implementation — turning problems into working solutions.
+                        <br><br>
+                        I’ve built web applications, mobile apps, and ML-powered systems, experimenting with different technologies and approaches.
+                        I’m especially interested in how AI can enhance user experiences, automate tasks, and solve meaningful problems.
+                        <br><br>
+                        Constantly learning new tools, frameworks, and technologies, and always eager to expand my skill set and take on new challenges.
                     </div>
-                    <div class="info-item">
+                </div>
+
+
+                <div class="info-item dropdown">
+                    <div class="info-header">
                         <i class="fas fa-trophy icon"></i>
-                        <span>
-                            Competitive Speed Cuber at <a href="https://www.worldcubeassociation.org/persons/2019KOST12" target="_blank" class="wca-link">WCA</a>
-                            <span class="medal gold"><i class="fas fa-medal"></i> Gold</span>
-                            <span class="medal silver"><i class="fas fa-medal"></i> Silver</span>
-                            <span class="achievement-badge">FIRST_FEMALE</span>
-                        </span>
+                        <span>Competitive Speed Cuber (WCA)</span>
+                        <i class="fas fa-chevron-down arrow"></i>
                     </div>
-                    <div class="info-item">
+                    <div class="info-body">
+                        Ranked 1st nationally and 2nd internationally in Blindfolded Rubik’s Cube solving (3x3 BLD), becoming the
+                        first female competitor in Macedonia to reach this level. Former Macedonian national champion in this
+                        category.
+                        <br><br>
+                        Over time I’ve learned <b>400+ algorithms</b> across different events.
+                        <br><br>
+                        <a href="https://www.worldcubeassociation.org/persons/2019KOST12" target="_blank" class="wca-link">
+                            My WCA profile →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="info-item dropdown">
+                    <div class="info-header">
                         <i class="fas fa-square-root-alt icon"></i>
-                        <span>National/International Math Competitions (HS)</span>
+                        <span>Math & Informatics Competitions</span>
+                        <i class="fas fa-chevron-down arrow"></i>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-panel" id="panel1">
-            <div class="panel-content">
-                <h2 class="panel-title">> SKILLS</h2>
-                <div class="info-container">
-                    <div class="info-item">
-                        <i class="fas fa-code icon"></i>
-                        <span>JavaScript | HTML | CSS | Python | Java | C++</span>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-palette icon"></i>
-                        <span>UI/UX Design | Aesthetics</span>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-search icon"></i>
-                        <span>
-                            Academic Researcher
-                            <div class="research-links">
-
-
-                            </div>
-                        </span>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-cube icon"></i>
-                        <span>Speedcubing Algorithms</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-panel" id="panel2">
-            <div class="panel-content">
-                <h2 class="panel-title">> PROJECTS</h2>
-                <div class="info-container">
-                    <div class="info-item">
-                        <i class="fas fa-code icon"></i>
-                        <span>
-                            <a href="https://discovermacedonia.vercel.app/" target="_blank" class="research-link">
-                                Discover Macedonia
-                            </a>
-                        </span>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-keyboard icon"></i>
-                        <span>
-                            <a href="https://github.com/DianaKostadinova/TypeFstr" target="_blank" class="research-link">
-                                Type Writer Game
-                            </a>
-                        </span>
-                    </div>
-
-
-                    <div class="info-item">
-                        <i class="fas fa-sun icon"></i>
-                        <span>
-                            <a href="https://github.com/DianaKostadinova/SkopjeSun" target="_blank" class="research-link">
-                                Sunny Cafe Finder App
-                            </a>
-                        </span>
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>
-
-
-        <div class="content-panel" id="panel3">
-            <div class="panel-content">
-                <h2 class="panel-title">> CONTACT</h2>
-                <div class="contact-panel">
-                    <div class="contact-item">
-
-                        <div class="contact-icon github-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <div class="contact-text">
-                            <div class="contact-label">$ GITHUB</div>
-                            <div class="contact-value">
-                                > <a href="https://github.com/DianaKostadinova" target="_blank">github.com/DianaKostadinova</a>
-                            </div>
-                        </div>
-                        <a class="copy-btn" href="https://github.com/DianaKostadinova" target="_blank">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon linkedin-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div class="contact-text">
-                            <div class="contact-label">$ LINKEDIN</div>
-                            <div class="contact-value">
-                                <a href="https://www.linkedin.com/in/diana-kostadinova-382a60364" target="_blank">linkedin.com/in/diana-kostadinova</a>
-                            </div>
-                        </div>
-                        <a class="copy-btn" href="https://www.linkedin.com/in/diana-kostadinova-382a60364" target="_blank">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-
-
-                    <div class="contact-item">
-                        <div class="contact-icon email-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-text">
-                            <div class="contact-label">$ EMAIL</div>
-                            <div class="contact-value">> dkostadinova112@gmail.com</div>
-                        </div>
-                        <a href="mailto:dkostadinova112@gmail.com" class="copy-btn">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
+                    <div class="info-body">
+                        Participated in numerous mathematics competitions, consistently earning high results and demonstrating
+                        strong analytical and problem-solving abilities, subsequently sharing my expertise by tutoring and guiding
+                        future competitors to excel in mathematics competitions.
                     </div>
 
                 </div>
+
             </div>
         </div>
     </div>
+
+    <div class="content-panel" id="panel1">
+        <div class="panel-content">
+            <h2 class="panel-title">> SKILLS</h2>
+            <div class="info-container">
+
+                <div class="info-item dropdown">
+                    <div class="info-header">
+                        <i class="fas fa-brain icon"></i>
+                        <span>Core Computer Science</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="info-body">
+                        Object-Oriented Programming (OOP)
+                        <br> Data Structures & Algorithms
+                        <br> Structured Programming Principles
+                        <br> Database Systems & Data Modeling
+                        <br> Software Architecture Fundamentals
+                    </div>
+                </div>
+
+                <div class="info-item dropdown">
+                    <div class="info-header">
+                        <i class="fas fa-robot icon"></i>
+                        <span>AI & Machine Learning</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="info-body">
+                        ML Model Development & Evaluation
+                        <br> Computer Vision Systems (YOLO, detection pipelines)
+                        <br> Few-shot Learning & Embedding Models
+                        <br> Dataset Cleaning, Annotation & Augmentation
+                        <br> LLM Integration & AI-powered Applications
+                    </div>
+                </div>
+
+                <div class="info-item dropdown">
+                    <div class="info-header">
+                        <i class="fas fa-code icon"></i>
+                        <span>Programming Languages</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="info-body">
+                        Python (AI, backend, data)
+                        <br> JavaScript (web & interactive apps)
+                        <br> C++ (algorithms, performance)
+                        <br> Java (OOP & application development)
+                    </div>
+                </div>
+
+                <div class="info-item dropdown">
+                    <div class="info-header">
+                        <i class="fas fa-server icon"></i>
+                        <span>Frameworks & Backend Development</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="info-body">
+                        React & React Native
+                        <br> FastAPI
+                        <br>Angular
+                        <br> Firebase & Supabase
+                        <br> REST APIs & Service Integration
+                    </div>
+                </div>
+
+                <div class="info-item dropdown">
+                    <div class="info-header">
+                        <i class="fas fa-tools icon"></i>
+                        <span>Tools & Technologies</span>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="info-body">
+                        Git & GitHub
+                        <br> AWS
+                        <br> Roboflow
+                        <br> Hugging Face Models
+                        <br> OpenAI API
+                        <br> PyTorch & TensorFlow
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="content-panel" id="panel2">
+        <div class="panel-content">
+            <h2 class="panel-title">> PROJECTS</h2>
+            <div class="info-container">
+
+                <div class="info-item dropdown">
+                    <div class="info-header">
+                        <div class="project-title">
+                        <i class="fas fa-globe icon"></i>
+                        <span>
+                              <a href="https://discovermacedonia.vercel.app/" target="_blank" class="research-link">
+                                 Discover Macedonia
+                              </a>
+                         </span>
+                        <div class="project-preview cert-image-container">
+                        <img src="Screenshot_28-1-2026_18275_discovermacedonia.vercel.app.jpeg" height="813"
+                             width="1871"/>
+                    </div>
+                        </div>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+
+                    <div class="info-body">
+                    <b>Discover Macedonia</b> is an AI-powered tourism web application designed to help visitors explore
+                    locations, history, and cultural sites across Macedonia in a more interactive way.
+                    The goal was to create a smart travel assistant that combines real-world information
+                    with conversational AI to guide users like a digital tour companion.
+                    <br><br>
+                    Built with <b>React</b> and <b>Firebase</b>, the platform integrates multiple APIs to fetch
+                    location data, images, and contextual information. AI capabilities are powered through
+                    <b>Hugging Face models</b>, <b>LLM-based assistants</b>, and <b>LLaMA/OpenAI API integrations</b>
+                    to provide intelligent responses, recommendations, and explanations about places.
+                    <br><br>
+                    The project focuses on delivering an engaging, AI-enhanced user experience while strengthening
+                    front-end architecture, state management, and real-time data handling.
+
+                </div>
+                    <div class="tech-stack">
+                    <span class="tech-badge">React</span>
+                    <span class="tech-badge">Firebase</span>
+                    <span class="tech-badge">Hugging Face</span>
+                    <span class="tech-badge">LLaMA / LLMs</span>
+                    <span class="tech-badge">OpenAI API</span>
+                    <span class="tech-badge">REST APIs</span>
+                    <span class="tech-badge">AI Agents</span>
+                </div>
+
+                </div>
+
+                <div class="info-item dropdown">
+
+                    <div class="info-header">
+                        <div class="project-title">
+                            <i class="fas fa-map-marker-alt icon"></i>
+                            <a href="https://github.com/DianaKostadinova/Skope" target="_blank" class="research-link">
+                                Skope – AI Landmark Recognition App
+                            </a>
+                            <div class="project-preview cert-image-container">
+
+                                <img src="Screenshot 2026-01-28 185820.png" height="805" width="1878"/>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+
+                    <div class="info-body">
+                        A tourism-focused mobile application built with <b>React Native</b> that helps improve the visitor experience in Macedonia.
+                        The app allows tourists to simply <b>point their camera at a monument or landmark</b> to instantly recognize it and
+                        learn interesting information about its history and cultural significance.
+                        <br><br>
+                        The goal is to make exploring new places more interactive and educational,
+                        especially in regions where tourists may not have prior knowledge about local landmarks.
+                        <br><br>
+                        The system uses <b>Python, FastAPI, Roboflow, and YOLOv8</b> for computer vision and real-time object detection.
+                        I managed large image datasets through cleaning, annotation, and optimization for model training,
+                        combining backend AI processing with a smooth mobile interface to deliver accurate landmark recognition in real time.
+                    </div>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">React Native</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">FastAPI</span>
+                        <span class="tech-badge">YOLOv8</span>
+                        <span class="tech-badge">Roboflow</span>
+                        <span class="tech-badge">Computer Vision</span>
+                    </div>
+
+                </div>
+
+                <div class="info-item dropdown">
+                    <div class="info-header">
+                        <div class="project-title">
+                        <i class="fas fa-brain icon"></i>
+                        <a href="https://github.com/DianaKostadinova/Few-Shot-Recognition-Model">Few-Shot Landmark Recognition Model</a>
+                            <div class="project-preview cert-image-container">
+
+                                <img src="fig3_confusion_matrix.png" height="1774" width="4716"/></div>
+                    </div>
+
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="info-body">
+                        Designed a hybrid metric-classification model using <b>PyTorch</b>
+                        for landmark recognition in environments with extremely limited data availability.
+                        <br><br>
+                        A major challenge was that there are <b>very few large, structured datasets</b> for Macedonian landmarks.
+                        This creates a barrier for building educational tools, tourism applications, and cultural heritage systems,
+                        since traditional deep learning models require thousands of images per class.
+                        <br><br>
+                        To address this, the project focuses on <b>few-shot learning</b> — developing a system that can learn to
+                        recognize monuments using only <b>~30 images per class</b>. The model combines metric learning to build
+                        strong visual embeddings with a classification branch, along with aggressive data augmentation to improve
+                        generalization despite the limited dataset.
+                        <br><br>
+                        The framework achieved <b>75% classification accuracy</b> across five Macedonian landmarks,
+                        demonstrating that hybrid few-shot approaches can make AI viable for regions where large datasets do not exist.
+                        This opens the door for practical use in tourism apps, educational platforms, and cultural preservation systems.
+                    </div>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">PyTorch</span>
+                        <span class="tech-badge">Metric Learning</span>
+                        <span class="tech-badge">Few-Shot Learning</span>
+                        <span class="tech-badge">Computer Vision</span>
+                        <span class="tech-badge">Data Augmentation</span>
+                        <span class="tech-badge">Embedding Models</span>
+                        <span class="tech-badge">Model Evaluation</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="content-panel" id="panel3">
+        <div class="panel-content">
+            <h2 class="panel-title">> CERTIFICATES</h2>
+            <div class="info-item dropdown">
+                <div class="info-header">
+                    <i class="fas fa-laptop-code icon"></i>
+                    <span>The Complete Full-Stack Web Development Bootcamp (Udemy)</span>
+                    <div class="cert-image-container">
+                        <img src="Screenshot_28-1-2026_17723_.jpeg"   alt="The Complete Full-Stack Web Development Bootcamp Certificate"/>
+                    </div>
+                    <i class="fas fa-chevron-down arrow"></i>
+                </div>
+                <div class="info-body">
+                    Built full-stack web applications from concept to deployment.
+                    Gained hands-on experience in front-end and back-end development, including
+                    responsive UI design, API integration, and database systems.
+                    <br><br>
+                    Worked with <b>React, Node.js, Express, SQL/NoSQL databases</b>,
+                    deployment workflows, and version control using Git & GitHub.
+                    Strengthened skills in web architecture, state management, and server-side programming.
+                </div>
+            </div>
+            <div class="info-container">
+                <div class="info-item dropdown">
+                    <div class="info-header">
+                        <i class="fas fa-rocket icon"></i>
+                        <span>Robotics in Space (International Space Alliance)</span>
+                        <div class="cert-image-container">
+                            <img src="Screenshot_28-1-2026_17539_www.linkedin.com.jpeg"
+                                                               height="671" width="573"  alt="Robotics in Space Certificate"/>
+
+                        </div>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="info-body">
+                        Hands-on experience with robotics systems and autonomous mechanisms related to space exploration.
+                        Learned spacecraft design principles, subsystem architecture, and mission planning.
+                        Worked with 3D printing for rapid prototyping of space components and explored cybersecurity
+                        for protecting spacecraft communication and onboard systems.
+                        <br><br>
+                        Developed interdisciplinary skills combining mechanical design, software programming,
+                        and space mission engineering.
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content-panel" id="panel4">
+        <div class="panel-content">
+            <h2 class="panel-title">> CONTACT</h2>
+            <div class="contact-panel">
+                <div class="contact-item">
+
+                    <div class="contact-icon github-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="contact-text">
+                        <div class="contact-label">$ GITHUB</div>
+                        <div class="contact-value">
+                            > <a href="https://github.com/DianaKostadinova" target="_blank">github.com/DianaKostadinova</a>
+                        </div>
+                    </div>
+                    <a class="copy-btn" href="https://github.com/DianaKostadinova" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon linkedin-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div class="contact-text">
+                        <div class="contact-label">$ LINKEDIN</div>
+                        <div class="contact-value">
+                            <a href="https://www.linkedin.com/in/diana-kostadinova-382a60364" target="_blank">linkedin.com/in/diana-kostadinova</a>
+                        </div>
+                    </div>
+                    <a class="copy-btn" href="https://www.linkedin.com/in/diana-kostadinova-382a60364" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+
+
+                <div class="contact-item">
+                    <div class="contact-icon email-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <div class="contact-label">$ EMAIL</div>
+                        <div class="contact-value">> dkostadinova112@gmail.com</div>
+                    </div>
+                    <a href="mailto:dkostadinova112@gmail.com" class="copy-btn">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 
 </body>
