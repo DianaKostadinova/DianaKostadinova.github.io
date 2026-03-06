@@ -1,429 +1,190 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Diana Kostadinova — Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet"/>
 
-    <meta charset="UTF-8">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diana Kostadinova</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
+<div id="cur"></div>
+<div id="cur-ring"></div>
 
-<script src="script.js"></script>
-<header class="header">
-    <h1 id="typewriter"></h1>
-    <div>Computer Science Student</div>
-   <div>Skopje, N.Macedonia</div>
-    <div class="nav-links">
-        <a href="#" class="nav-link active" data-panel="0">About</a>
-        <a href="#" class="nav-link" data-panel="1">Skills</a>
-        <a href="#" class="nav-link" data-panel="2">Projects</a>
-        <a href="#" class="nav-link" data-panel="3">Certificates</a>
-        <a href="#" class="nav-link" data-panel="4">Contact</a>
-    </div>
-</header>
+<!-- Three.js cube canvas -->
+<canvas id="cube-canvas"></canvas>
 
-<div class="main-container">
-    <button class="panel-button left-btn"><i class="fas fa-chevron-left"></i></button>
-    <button class="panel-button right-btn"><i class="fas fa-chevron-right"></i></button>
-
-   
-
-    <div class="content-panel active" id="panel0">
-        <div class="panel-content">
-            <h2 class="panel-title">> ABOUT_ME</h2>
-            <div class="info-container">
-                <div class="info-item dropdown">
-                    <div class="info-header">
-                        <i class="fas fa-graduation-cap icon"></i>
-                        <span>Computer Science Student @ FINKI, UKIM</span>
-                        <i class="fas fa-chevron-down arrow"></i>
-                    </div>
-                    <div class="info-body">
-                        Currently focused on building <b>AI and machine learning applications</b> and exploring how intelligent systems can be used in practical, real-world scenarios.
-                        I enjoy taking ideas from concept to implementation — turning problems into working solutions.
-                        <br><br>
-                        I’ve built web applications, mobile apps, and ML-powered systems, experimenting with different technologies and approaches.
-                        I’m especially interested in how AI can enhance user experiences, automate tasks, and solve meaningful problems.
-                        <br><br>
-                        Constantly learning new tools, frameworks, and technologies, and always eager to expand my skill set and take on new challenges.
-                    </div>
-                </div>
-
-
-                <div class="info-item dropdown">
-                    <div class="info-header">
-                        <i class="fas fa-trophy icon"></i>
-                        <span>Competitive Speed Cuber (WCA)</span>
-                        <i class="fas fa-chevron-down arrow"></i>
-                    </div>
-                    <div class="info-body">
-                        Ranked 1st nationally and 2nd internationally in Blindfolded Rubik’s Cube solving (3x3 BLD), becoming the
-                        first female competitor in Macedonia to reach this level. Former Macedonian national champion in this
-                        category.
-                        <br><br>
-                        Over time I’ve learned <b>400+ algorithms</b> across different events.
-                        <br><br>
-                        <a href="https://www.worldcubeassociation.org/persons/2019KOST12" target="_blank" class="wca-link">
-                            My WCA profile →
-                        </a>
-                    </div>
-                </div>
-
-                <div class="info-item dropdown">
-                    <div class="info-header">
-                        <i class="fas fa-square-root-alt icon"></i>
-                        <span>Math & Informatics Competitions</span>
-                        <i class="fas fa-chevron-down arrow"></i>
-                    </div>
-                    <div class="info-body">
-                        Participated in numerous mathematics competitions, consistently earning high results and demonstrating
-                        strong analytical and problem-solving abilities, subsequently sharing my expertise by tutoring and guiding
-                        future competitors to excel in mathematics competitions.
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="content-panel" id="panel1">
-        <div class="panel-content">
-            <h2 class="panel-title">> SKILLS</h2>
-            <div class="info-container">
-
-                <div class="info-item dropdown">
-                    <div class="info-header">
-                        <i class="fas fa-brain icon"></i>
-                        <span>Core Computer Science</span>
-                        <i class="fas fa-chevron-down arrow"></i>
-                    </div>
-                    <div class="info-body">
-                        Object-Oriented Programming (OOP)
-                        <br> Data Structures & Algorithms
-                        <br> Structured Programming Principles
-                        <br> Database Systems & Data Modeling
-                        <br> Software Architecture Fundamentals
-                    </div>
-                </div>
-
-                <div class="info-item dropdown">
-                    <div class="info-header">
-                        <i class="fas fa-robot icon"></i>
-                        <span>AI & Machine Learning</span>
-                        <i class="fas fa-chevron-down arrow"></i>
-                    </div>
-                    <div class="info-body">
-                        ML Model Development & Evaluation
-                        <br> Computer Vision Systems (YOLO, detection pipelines)
-                        <br> Few-shot Learning & Embedding Models
-                        <br> Dataset Cleaning, Annotation & Augmentation
-                        <br> LLM Integration & AI-powered Applications
-                    </div>
-                </div>
-
-                <div class="info-item dropdown">
-                    <div class="info-header">
-                        <i class="fas fa-code icon"></i>
-                        <span>Programming Languages</span>
-                        <i class="fas fa-chevron-down arrow"></i>
-                    </div>
-                    <div class="info-body">
-                        Python (AI, backend, data)
-                        <br> JavaScript (web & interactive apps)
-                        <br> C++ (algorithms, performance)
-                        <br> Java (OOP & application development)
-                    </div>
-                </div>
-
-                <div class="info-item dropdown">
-                    <div class="info-header">
-                        <i class="fas fa-server icon"></i>
-                        <span>Frameworks & Backend Development</span>
-                        <i class="fas fa-chevron-down arrow"></i>
-                    </div>
-                    <div class="info-body">
-                        React & React Native
-                        <br> FastAPI
-                        <br>Angular
-                        <br> Firebase & Supabase
-                        <br> REST APIs & Service Integration
-                    </div>
-                </div>
-
-                <div class="info-item dropdown">
-                    <div class="info-header">
-                        <i class="fas fa-tools icon"></i>
-                        <span>Tools & Technologies</span>
-                        <i class="fas fa-chevron-down arrow"></i>
-                    </div>
-                    <div class="info-body">
-                        Git & GitHub
-                        <br> AWS
-                        <br> Roboflow
-                        <br> Hugging Face Models
-                        <br> OpenAI API
-                        <br> PyTorch & TensorFlow
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-    <div class="content-panel" id="panel2">
-        <div class="panel-content">
-            <h2 class="panel-title">> PROJECTS</h2>
-            <div class="info-container">
-
-                <div class="info-item dropdown">
-                    <div class="info-header">
-                        <div class="project-title">
-                        <i class="fas fa-globe icon"></i>
-                        <span>
-                              <a href="https://discovermacedonia.vercel.app/" target="_blank" class="research-link">
-                                 Discover Macedonia
-                              </a>
-                         </span>
-                        <div class="project-preview cert-image-container">
-                        <img src="Screenshot_28-1-2026_18275_discovermacedonia.vercel.app.jpeg" height="813"
-                             width="1871"/>
-                    </div>
-                        </div>
-                        <i class="fas fa-chevron-down arrow"></i>
-                    </div>
-
-                    <div class="info-body">
-                    <b>Discover Macedonia</b> is an AI-powered tourism web application designed to help visitors explore
-                    locations, history, and cultural sites across Macedonia in a more interactive way.
-                    The goal was to create a smart travel assistant that combines real-world information
-                    with conversational AI to guide users like a digital tour companion.
-                    <br><br>
-                    Built with <b>React</b> and <b>Firebase</b>, the platform integrates multiple APIs to fetch
-                    location data, images, and contextual information. AI capabilities are powered through
-                    <b>Hugging Face models</b>, <b>LLM-based assistants</b>, and <b>LLaMA/OpenAI API integrations</b>
-                    to provide intelligent responses, recommendations, and explanations about places.
-                    <br><br>
-                    The project focuses on delivering an engaging, AI-enhanced user experience while strengthening
-                    front-end architecture, state management, and real-time data handling.
-
-                </div>
-                    <div class="tech-stack">
-                    <span class="tech-badge">React</span>
-                    <span class="tech-badge">Firebase</span>
-                    <span class="tech-badge">Hugging Face</span>
-                    <span class="tech-badge">LLaMA / LLMs</span>
-                    <span class="tech-badge">OpenAI API</span>
-                    <span class="tech-badge">REST APIs</span>
-                    <span class="tech-badge">AI Agents</span>
-                </div>
-
-                </div>
-
-                <div class="info-item dropdown">
-
-                    <div class="info-header">
-                        <div class="project-title">
-                            <i class="fas fa-map-marker-alt icon"></i>
-                            <a href="https://github.com/DianaKostadinova/Skope" target="_blank" class="research-link">
-                                Skope – AI Landmark Recognition
-                            </a>
-                            <div class="project-preview cert-image-container">
-
-                                <img src="Screenshot 2026-01-28 185820.png" height="805" width="1778" class="ovaa"/>
-                            </div>
-                        </div>
-                        <i class="fas fa-chevron-down arrow"></i>
-                    </div>
-
-                    <div class="info-body">
-                        A tourism-focused mobile application built with <b>React Native</b> that helps improve the visitor experience in Macedonia.
-                        The app allows tourists to simply <b>point their camera at a monument or landmark</b> to instantly recognize it and
-                        learn interesting information about its history and cultural significance.
-                        <br><br>
-                        The goal is to make exploring new places more interactive and educational,
-                        especially in regions where tourists may not have prior knowledge about local landmarks.
-                        <br><br>
-                        The system uses <b>Python, FastAPI, Roboflow, and YOLOv8</b> for computer vision and real-time object detection.
-                        I managed large image datasets through cleaning, annotation, and optimization for model training,
-                        combining backend AI processing with a smooth mobile interface to deliver accurate landmark recognition in real time.
-                    </div>
-
-                    <div class="tech-stack">
-                        <span class="tech-badge">React Native</span>
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">FastAPI</span>
-                        <span class="tech-badge">YOLOv8</span>
-                        <span class="tech-badge">Roboflow</span>
-                        <span class="tech-badge">Computer Vision</span>
-                    </div>
-
-                </div>
-
-                <div class="info-item dropdown">
-                    <div class="info-header">
-                        <div class="project-title">
-                        <i class="fas fa-brain icon"></i>
-                        <a href="https://github.com/DianaKostadinova/Few-Shot-Recognition-Model">Few-Shot Landmark Recognition Model</a>
-                            <div class="project-preview cert-image-container">
-
-                                <img src="fig3_confusion_matrix.png" height="1774" width="4716"/></div>
-                    </div>
-
-                        <i class="fas fa-chevron-down arrow"></i>
-                    </div>
-                    <div class="info-body">
-                        Designed a hybrid metric-classification model using <b>PyTorch</b>
-                        for landmark recognition in environments with extremely limited data availability.
-                        <br><br>
-                        A major challenge was that there are <b>very few large, structured datasets</b> for Macedonian landmarks.
-                        This creates a barrier for building educational tools, tourism applications, and cultural heritage systems,
-                        since traditional deep learning models require thousands of images per class.
-                        <br><br>
-                        To address this, the project focuses on <b>few-shot learning</b> — developing a system that can learn to
-                        recognize monuments using only <b>~30 images per class</b>. The model combines metric learning to build
-                        strong visual embeddings with a classification branch, along with aggressive data augmentation to improve
-                        generalization despite the limited dataset.
-                        <br><br>
-                        The framework achieved <b>75% classification accuracy</b> across five Macedonian landmarks,
-                        demonstrating that hybrid few-shot approaches can make AI viable for regions where large datasets do not exist.
-                        This opens the door for practical use in tourism apps, educational platforms, and cultural preservation systems.
-                    </div>
-
-                    <div class="tech-stack">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">PyTorch</span>
-                        <span class="tech-badge">Metric Learning</span>
-                        <span class="tech-badge">Few-Shot Learning</span>
-                        <span class="tech-badge">Computer Vision</span>
-                        <span class="tech-badge">Data Augmentation</span>
-                        <span class="tech-badge">Embedding Models</span>
-                        <span class="tech-badge">Model Evaluation</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-    <div class="content-panel" id="panel3">
-        <div class="panel-content">
-            <h2 class="panel-title">> CERTIFICATES</h2>
-            <div class="info-item dropdown">
-                <div class="info-header">
-                    <i class="fas fa-laptop-code icon"></i>
-                    <span>The Complete Full-Stack Web Development Bootcamp (Udemy)</span>
-                    <div class="cert-image-container">
-                        <img src="Screenshot_28-1-2026_17723_.jpeg"   alt="The Complete Full-Stack Web Development Bootcamp Certificate"/>
-                    </div>
-                    <i class="fas fa-chevron-down arrow"></i>
-                </div>
-                <div class="info-body">
-                    Built full-stack web applications from concept to deployment.
-                    Gained hands-on experience in front-end and back-end development, including
-                    responsive UI design, API integration, and database systems.
-                    <br><br>
-                    Worked with <b>React, Node.js, Express, SQL/NoSQL databases</b>,
-                    deployment workflows, and version control using Git & GitHub.
-                    Strengthened skills in web architecture, state management, and server-side programming.
-                </div>
-            </div>
-            <div class="info-container">
-                <div class="info-item dropdown">
-                    <div class="info-header">
-                        <i class="fas fa-rocket icon"></i>
-                        <span>Robotics in Space (International Space Alliance)</span>
-                        <div class="cert-image-container">
-                            <img src="Screenshot_28-1-2026_17539_www.linkedin.com.jpeg"
-                                                               height="671" width="573"  alt="Robotics in Space Certificate"/>
-
-                        </div>
-                        <i class="fas fa-chevron-down arrow"></i>
-                    </div>
-                    <div class="info-body">
-                        Hands-on experience with robotics systems and autonomous mechanisms related to space exploration.
-                        Learned spacecraft design principles, subsystem architecture, and mission planning.
-                        Worked with 3D printing for rapid prototyping of space components and explored cybersecurity
-                        for protecting spacecraft communication and onboard systems.
-                        <br><br>
-                        Developed interdisciplinary skills combining mechanical design, software programming,
-                        and space mission engineering.
-                    </div>
-                </div>
-
-
-
-            </div>
-        </div>
-    </div>
-
-    <div class="content-panel" id="panel4">
-        <div class="panel-content">
-            <h2 class="panel-title">> CONTACT</h2>
-            <div class="contact-panel">
-                <div class="contact-item">
-
-                    <div class="contact-icon github-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <div class="contact-text">
-                        <div class="contact-label">$ GITHUB</div>
-                        <div class="contact-value">
-                            > <a href="https://github.com/DianaKostadinova" target="_blank">github.com/DianaKostadinova</a>
-                        </div>
-                    </div>
-                    <a class="copy-btn" href="https://github.com/DianaKostadinova" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon linkedin-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </div>
-                    <div class="contact-text">
-                        <div class="contact-label">$ LINKEDIN</div>
-                        <div class="contact-value">
-                            <a href="https://www.linkedin.com/in/diana-kostadinova-382a60364" target="_blank">linkedin.com/in/diana-kostadinova</a>
-                        </div>
-                    </div>
-                    <a class="copy-btn" href="https://www.linkedin.com/in/diana-kostadinova-382a60364" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-
-
-                <div class="contact-item">
-                    <div class="contact-icon email-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-text">
-                        <div class="contact-label">$ EMAIL</div>
-                        <div class="contact-value">> dkostadinova112@gmail.com</div>
-                    </div>
-                    <a href="mailto:dkostadinova112@gmail.com" class="copy-btn">
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </div>
-
-            </div>
-        </div>
+<!-- Solve progress HUD -->
+<div id="hud">
+    <div class="hud-title">🧩 Solve Progress</div>
+    <div class="hud-bar-track"><div id="hud-fill"></div></div>
+    <div class="hud-row">
+        <span id="hud-moves">0 / 12</span>
+        <span id="hud-state">Scrambled</span>
     </div>
 </div>
 
+<!-- NAV -->
+<nav id="nav">
+    <a class="nav-logo" href="#hero">DK<span>.</span></a>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
 
+<!-- CONTENT -->
+<div id="content">
+
+    <!-- HERO -->
+    <section id="hero">
+        <p class="hero-eyebrow">Software Engineer · Builder · Skopje, MK</p>
+        <h1 class="hero-name">
+            <span class="l1">Diana</span>
+            <span class="l2">Kostadinova</span>
+        </h1>
+        <p class="hero-sub">
+            I build things that <em>matter</em> — from idea to production,
+            across the full stack. Currently building <strong>Labely.ai</strong>
+            and always chasing the next thing worth learning.
+        </p>
+        <div class="hero-cta">
+            <a href="#projects" class="btn btn-p">See My Work</a>
+            <a href="#contact" class="btn btn-g">Say Hello →</a>
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="panel" id="about-panel">
+            <div class="sec-num"><span>01</span>About me</div>
+            <h2>Built to solve.<br/><em>Driven</em> to create.</h2>
+            <p>I'm a Software Engineering student from Skopje with a relentless drive to understand systems deeply and build things that actually work. I don't settle for "good enough" — I want to know <strong>why</strong> something works, and then make it better.</p>
+            <p>I move fast across the full stack — mobile, web, machine learning — and I genuinely enjoy the moments where a hard problem suddenly clicks. Every project I ship makes the next one more ambitious.</p>
+            <p>Right now I'm <strong>building Labely.ai</strong> — a domain-specific prompt-based annotation platform — and learning something new every single day.</p>
+            <div class="stats">
+                <div class="stat"><span class="stat-n cc-r">20+</span><span class="stat-l">Technologies</span></div>
+                <div class="stat"><span class="stat-n cc-b">4+</span><span class="stat-l">Shipped Products</span></div>
+                <div class="stat"><span class="stat-n cc-g">∞</span><span class="stat-l">Curiosity</span></div>
+            </div>
+            <div class="badge-row">
+                <span class="badge badge-r">Full-Stack</span>
+                <span class="badge badge-b">Mobile Dev</span>
+                <span class="badge badge-g">ML / AI</span>
+                <span class="badge badge-y">Skopje 🇲🇰</span>
+                <span class="badge badge-r">UI/UX</span>
+                <span class="badge badge-b">Open to Work</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="panel panel-wide" id="projects-panel">
+            <div class="sec-num"><span>02</span>What I've shipped</div>
+            <h2>Problems solved. Products shipped.</h2>
+            <div class="proj-grid">
+
+                <div class="proj-card current">
+                    <div class="proj-status cc-r"><span class="dot-live"></span>Building now</div>
+                    <h3 class="proj-title">Labely.ai</h3>
+                    <p class="proj-desc">An AI-powered annotation platform where users write domain-specific prompts to automatically label datasets. Built to remove the bottleneck of manual data labeling for ML teams — bringing precision and speed to the annotation pipeline.</p>
+                    <div class="proj-tags"><span class="ptag">AI/ML</span><span class="ptag">Annotation</span><span class="ptag">Platform</span></div>
+                    <a class="proj-link" href="https://github.com/LabelyAI" target="_blank" rel="noopener">
+                        Explore on GitHub
+                        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+
+                <div class="proj-card done">
+                    <div class="proj-status cc-g"><span class="dot-done"></span>Shipped</div>
+                    <h3 class="proj-title">Discover Macedonia</h3>
+                    <p class="proj-desc">A full travel platform I designed and built from scratch — featuring destination guides, local attractions, and cultural highlights across Macedonia. Built with React and TypeScript, deployed live on Vercel.</p>
+                    <div class="proj-tags"><span class="ptag">React</span><span class="ptag">TypeScript</span><span class="ptag">Vercel</span></div>
+                    <a class="proj-link" href="https://discovermacedonia.vercel.app" target="_blank" rel="noopener">
+                        View live
+                        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+
+                <div class="proj-card done">
+                    <div class="proj-status cc-g"><span class="dot-done"></span>Shipped</div>
+                    <h3 class="proj-title">Skope</h3>
+                    <p class="proj-desc">A mobile app I took from concept to production solo — built with Flutter and Firebase. Skope lets users discover and explore local spots around them with a clean, fast interface. Fully shipped and deployed.</p>
+                    <div class="proj-tags"><span class="ptag">Mobile</span><span class="ptag">Flutter</span><span class="ptag">Firebase</span></div>
+                    <a class="proj-link" href="https://github.com/DianaKostadinova/Skope" target="_blank" rel="noopener">
+                        View on GitHub
+                        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+
+                <div class="proj-card done">
+                    <div class="proj-status cc-g"><span class="dot-done"></span>Shipped</div>
+                    <h3 class="proj-title">Few-Shot Monument Classifier</h3>
+                    <p class="proj-desc">A deep learning classification model built with TensorFlow and Python — trained, evaluated, and visualised with confusion matrix analysis. Demonstrates applied ML from data preprocessing through to model evaluation on a real dataset.</p>
+                    <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">TensorFlow</span><span class="ptag">ML</span></div>
+                    <a class="proj-link" href="https://github.com/DianaKostadinova" target="_blank" rel="noopener">
+                        View on GitHub
+                        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="panel" id="skills-panel">
+            <div class="sec-num"><span>03</span>Tech arsenal</div>
+            <h2>Tools I wield.</h2>
+            <div class="skills-grid" id="skills-grid"></div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="panel" id="contact-panel">
+            <div class="sec-num"><span>04</span>Let's connect</div>
+            <h2 class="contact-big">Have an <em>idea?</em><br/>Let's build it.</h2>
+            <p style="font-size:.82rem;color:var(--muted);line-height:1.9;margin-bottom:1.5rem">
+                I'm always looking for the next hard problem to solve. Whether it's a project, a collaboration, or just a conversation about tech — I'm here.
+            </p>
+            <a class="contact-email" href="/cdn-cgi/l/email-protection#395d52564a4d585d5057564f5808080b795e54585055175a5654"><span class="__cf_email__" data-cfemail="20444b4f53544144494e4f564111111260474d41494c0e434f4d">dkostadinova112@gmail.com</span></a>
+            <div class="contact-socials">
+
+                <a class="soc-btn" href="https://github.com/DianaKostadinova" target="_blank" rel="noopener">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    Personal GitHub
+                </a>
+                <a class="soc-btn" href="https://linkedin.com/in/diana-kostadinova" target="_blank" rel="noopener">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                    LinkedIn
+                </a>
+                <a class="soc-btn" href="https://instagram.com/dianakostadinovaa" target="_blank" rel="noopener">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                    Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+</div><!-- end #content -->
+
+<footer>
+    <p>© 2026 <span>Diana Kostadinova</span>. Scroll to solve.</p>
+    <p>Skopje, MK · Open to opportunities</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 </body>
 </html>
-
-
-
