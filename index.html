@@ -4,135 +4,244 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Diana Kostadinova — Software Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet"/>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
-<div id="cur"></div>
-<div id="cur-ring"></div>
-
-<!-- Three.js cube canvas -->
-<canvas id="cube-canvas"></canvas>
-
-<!-- Solve progress HUD -->
-<div id="hud">
-    <div class="hud-title">🧩 Solve Progress</div>
-    <div class="hud-bar-track"><div id="hud-fill"></div></div>
-    <div class="hud-row">
-        <span id="hud-moves">0 / 12</span>
-        <span id="hud-state">Scrambled</span>
-    </div>
+<div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
 </div>
 
-<!-- NAV -->
 <nav id="nav">
-    <a class="nav-logo" href="#hero">DK<span>.</span></a>
+    <a class="nav-logo" href="#hero">DK.</a>
     <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#research">Research</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span>
+    </button>
 </nav>
 
-<!-- CONTENT -->
-<div id="content">
+<main>
 
     <!-- HERO -->
     <section id="hero">
-        <p class="hero-eyebrow">Software Engineer · Builder · Skopje, MK</p>
-        <h1 class="hero-name">
-            <span class="l1">Diana</span>
-            <span class="l2">Kostadinova</span>
-        </h1>
-        <p class="hero-sub">
-            I build things that <em>matter</em> — from idea to production,
-            across the full stack. Currently building <strong>Labely.ai</strong>
-            and always chasing the next thing worth learning.
-        </p>
-        <div class="hero-cta">
-            <a href="#projects" class="btn btn-p">See My Work</a>
-            <a href="#contact" class="btn btn-g">Say Hello →</a>
+        <div class="hero-inner">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Currently at Sorsix · Skopje, MK
+            </div>
+            <h1 class="hero-name">Diana<br/>Kostadinova</h1>
+            <p class="hero-desc">Software Engineer · ML Researcher · Builder</p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">View work</a>
+                <a href="#contact" class="btn btn-ghost">Get in touch →</a>
+            </div>
         </div>
-
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about">
-        <div class="panel" id="about-panel">
-            <div class="sec-num"><span>01</span>About me</div>
-            <h2>Built to solve.<br/><em>Driven</em> to create.</h2>
-            <p>I'm a Software Engineering student from Skopje with a relentless drive to understand systems deeply and build things that actually work. I don't settle for "good enough" — I want to know <strong>why</strong> something works, and then make it better.</p>
-            <p>I move fast across the full stack — mobile, web, machine learning — and I genuinely enjoy the moments where a hard problem suddenly clicks. Every project I ship makes the next one more ambitious.</p>
-            <p>Right now I'm <strong>building Labely.ai</strong> — a domain-specific prompt-based annotation platform — and learning something new every single day.</p>
-            <div class="stats">
-                <div class="stat"><span class="stat-n cc-r">20+</span><span class="stat-l">Technologies</span></div>
-                <div class="stat"><span class="stat-n cc-b">4+</span><span class="stat-l">Shipped Products</span></div>
-                <div class="stat"><span class="stat-n cc-g">∞</span><span class="stat-l">Curiosity</span></div>
+    <section id="about" class="section">
+        <div class="container">
+            <p class="sec-label">01 — About</p>
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p>Software Engineering student at UKIM (GPA 9/10), currently interning at <strong>Sorsix</strong> — building full-stack systems with Angular, Kotlin, Spring Boot, and PostgreSQL.</p>
+                    <p>I like understanding how things work at a low level. Reading source code, tracing bugs to their root cause, figuring out why an abstraction breaks. The same drive applies whether I'm optimising a query, debugging a model, or solving a Rubik's Cube blindfolded.</p>
+                    <p>I work across mobile, web, and ML pipelines. I tend to go deep on whatever I'm building rather than staying on the surface.</p>
+                </div>
+                <div class="about-stats reveal">
+                    <div class="stat-item">
+                        <span class="stat-value">25+</span>
+                        <span class="stat-label">Technologies</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">4+</span>
+                        <span class="stat-label">Projects shipped</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">2</span>
+                        <span class="stat-label">Publications</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">8.5/10</span>
+                        <span class="stat-label">GPA</span>
+                    </div>
+                </div>
             </div>
-            <div class="badge-row">
-                <span class="badge badge-r">Full-Stack</span>
-                <span class="badge badge-b">Mobile Dev</span>
-                <span class="badge badge-g">ML / AI</span>
-              
-                <span class="badge badge-r">UI/UX</span>
-                <span class="badge badge-b">Open to Work</span>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+        <div class="container">
+            <p class="sec-label">02 — Experience & Education</p>
+            <div class="timeline">
+
+                <div class="tl-row reveal">
+                    <div class="tl-left">
+                        <span class="tl-year">2026 – Now</span>
+                    </div>
+                    <div class="tl-right">
+                        <div class="tl-header">
+                            <h3>Software Engineer Intern</h3>
+                            <span class="tl-company">Sorsix · Skopje, N. Macedonia</span>
+                        </div>
+                        <p>Mentored in a modern web development stack with focus on scalable architecture and design patterns. Built hands-on projects in Angular, Kotlin, Spring Boot, and PostgreSQL — culminating in a full-stack application.</p>
+                        <div class="tag-row">
+                            <span class="tag">Angular</span>
+                            <span class="tag">Kotlin</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-row reveal">
+                    <div class="tl-left">
+                        <span class="tl-year">2024 – 2028</span>
+                    </div>
+                    <div class="tl-right">
+                        <div class="tl-header">
+                            <h3>BSc Software Engineering & Information Systems</h3>
+                            <span class="tl-company">UKIM, Faculty of Computer Science · Skopje</span>
+                        </div>
+                        <p>GPA 8.5 / 10.0</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects">
-        <div class="panel panel-wide" id="projects-panel">
-            <div class="sec-num"><span>02</span>What I've shipped</div>
-            <h2>Problems solved. Products shipped.</h2>
-            <div class="proj-grid">
+    <section id="projects" class="section">
+        <div class="container">
+            <p class="sec-label">03 — Projects</p>
+            <div class="proj-list">
 
-                <div class="proj-card current">
-                    <div class="proj-status cc-r"><span class="dot-live"></span>Building now</div>
-                    <h3 class="proj-title">Labely.ai</h3>
-                    <p class="proj-desc">An AI-powered annotation platform where users write domain-specific prompts to automatically label datasets. Built to remove the bottleneck of manual data labeling for ML teams — bringing precision and speed to the annotation pipeline.</p>
-                    <div class="proj-tags"><span class="ptag">AI/ML</span><span class="ptag">Annotation</span><span class="ptag">Platform</span></div>
-                    <a class="proj-link" href="https://github.com/LabelyAI" target="_blank" rel="noopener">
-                        Explore on GitHub
-                        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
+                <div class="proj-item reveal">
+                    <div class="proj-meta">
+                        <span class="proj-num">01</span>
+                        <span class="proj-status live">Building</span>
+                    </div>
+                    <div class="proj-content">
+                        <h3>Labely.ai</h3>
+                        <p>Multi-domain AI annotation platform reducing manual labeling effort by up to 70% via prompt-driven segmentation and human-in-the-loop refinement. Specialized pipelines for medical imaging (SAM3), industrial defect detection (PatchCore), and logo recognition (ResNet18).</p>
+                        <div class="tag-row">
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">SAM3</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">Cloudflare R2</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/LabelyAI" class="proj-link" target="_blank" rel="noopener">GitHub →</a>
                 </div>
 
-                <div class="proj-card done">
-                    <div class="proj-status cc-g"><span class="dot-done"></span>Shipped</div>
-                    <h3 class="proj-title">Discover Macedonia</h3>
-                    <p class="proj-desc">A full travel platform I designed and built from scratch — featuring destination guides, local attractions, and cultural highlights across Macedonia. Built with React and TypeScript, deployed live on Vercel.</p>
-                    <div class="proj-tags"><span class="ptag">React</span><span class="ptag">TypeScript</span><span class="ptag">Vercel</span></div>
-                    <a class="proj-link" href="https://discovermacedonia.vercel.app" target="_blank" rel="noopener">
-                        View live
-                        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
+                <div class="proj-item reveal">
+                    <div class="proj-meta">
+                        <span class="proj-num">02</span>
+                        <span class="proj-status done">Shipped</span>
+                    </div>
+                    <div class="proj-content">
+                        <h3>Skope</h3>
+                        <p>Tourism mobile app that identifies landmarks in real time using YOLOv8 via Roboflow. Built with React Native and backed by a Python + FastAPI inference server — combining AI processing with a clean, fast interface for tourists.</p>
+                        <div class="tag-row">
+                            <span class="tag">React Native</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">YOLOv8</span>
+                            <span class="tag">Roboflow</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/DianaKostadinova/Skope" class="proj-link" target="_blank" rel="noopener">GitHub →</a>
                 </div>
 
-                <div class="proj-card done">
-                    <div class="proj-status cc-g"><span class="dot-done"></span>Shipped</div>
-                    <h3 class="proj-title">Skope</h3>
-                    <p class="proj-desc">A mobile app I took from concept to production solo — built with Flutter and Firebase. Skope lets users discover and explore local spots around them with a clean, fast interface. Fully shipped and deployed.</p>
-                    <div class="proj-tags"><span class="ptag">Mobile</span><span class="ptag">Flutter</span><span class="ptag">Firebase</span></div>
-                    <a class="proj-link" href="https://github.com/DianaKostadinova/Skope" target="_blank" rel="noopener">
-                        View on GitHub
-                        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
+                <div class="proj-item reveal">
+                    <div class="proj-meta">
+                        <span class="proj-num">03</span>
+                        <span class="proj-status done">Shipped</span>
+                    </div>
+                    <div class="proj-content">
+                        <h3>KonKat</h3>
+                        <p>Professional networking platform focused on direct, community-driven connection. Full-stack: Angular front-end, Kotlin and Spring Boot back-end, PostgreSQL for data persistence — covering user profiles, posts, follows, and real-time interactions.</p>
+                        <div class="tag-row">
+                            <span class="tag">Angular</span>
+                            <span class="tag">Kotlin</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/DianaKostadinova" class="proj-link" target="_blank" rel="noopener">GitHub →</a>
                 </div>
 
-                <div class="proj-card done">
-                    <div class="proj-status cc-g"><span class="dot-done"></span>Shipped</div>
-                    <h3 class="proj-title">Few-Shot Monument Classifier</h3>
-                    <p class="proj-desc">A deep learning classification model built with TensorFlow and Python — trained, evaluated, and visualised with confusion matrix analysis. Demonstrates applied ML from data preprocessing through to model evaluation on a real dataset.</p>
-                    <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">TensorFlow</span><span class="ptag">ML</span></div>
-                    <a class="proj-link" href="https://github.com/DianaKostadinova" target="_blank" rel="noopener">
-                        View on GitHub
-                        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </a>
+                <div class="proj-item reveal">
+                    <div class="proj-meta">
+                        <span class="proj-num">04</span>
+                        <span class="proj-status done">Shipped</span>
+                    </div>
+                    <div class="proj-content">
+                        <h3>Discover Macedonia</h3>
+                        <p>Dynamic travel platform built with React and Firebase. Integrates the OpenAI API and Hugging Face AI models to deliver AI-powered destination guides and interactive experiences for exploring Macedonia.</p>
+                        <div class="tag-row">
+                            <span class="tag">React</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">OpenAI API</span>
+                            <span class="tag">TypeScript</span>
+                        </div>
+                    </div>
+                    <a href="https://discovermacedonia.vercel.app" class="proj-link" target="_blank" rel="noopener">Live →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research" class="section">
+        <div class="container">
+            <p class="sec-label">04 — Research</p>
+            <div class="pub-list">
+
+                <div class="pub-item reveal">
+                    <span class="pub-num">01</span>
+                    <div class="pub-content">
+                        <h3>Hybrid Embedding and Classification Framework for Landmark Recognition with Limited Data</h3>
+                        <p>Designed a hybrid metric-classification model for few-shot landmark recognition. Combined metric learning with a classification branch and aggressive data augmentation to handle extremely limited datasets (~30 images per class), achieving ~75% classification accuracy across Macedonian landmarks.</p>
+                        <div class="tag-row">
+                            <span class="tag">Python</span>
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Few-Shot Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pub-item reveal">
+                    <span class="pub-num">02</span>
+                    <div class="pub-content">
+                        <h3>Prompt-Based Annotation Framework for Large-Scale Visual Datasets</h3>
+                        <p>Co-authored research on an AI-assisted annotation platform built on the SAM3 foundation model. Specialized pipelines for medical imaging, industrial defect detection, and logo recognition consistently outperform the base model. Scalable microservice architecture with FastAPI, Spring Boot, Cloudflare R2, and PostgreSQL.</p>
+                        <div class="tag-row">
+                            <span class="tag">SAM3</span>
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -140,53 +249,88 @@
     </section>
 
     <!-- SKILLS -->
-    <section id="skills">
-        <div class="panel" id="skills-panel">
-            <div class="sec-num"><span>03</span>Tech arsenal</div>
-            <h2>Tools I wield.</h2>
-            <div class="skills-grid" id="skills-grid"></div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-        <div class="panel" id="contact-panel">
-            <div class="sec-num"><span>04</span>Let's connect</div>
-            <h2 class="contact-big">Have an <em>idea?</em><br/>Let's build it.</h2>
-            <p style="font-size:.82rem;color:var(--muted);line-height:1.9;margin-bottom:1.5rem">
-                I'm always looking for the next hard problem to solve. Whether it's a project, a collaboration, or just a conversation about tech — I'm here.
-            </p>
-            <a class="contact-email" href="/cdn-cgi/l/email-protection#395d52564a4d585d5057564f5808080b795e54585055175a5654"><span class="__cf_email__" data-cfemail="20444b4f53544144494e4f564111111260474d41494c0e434f4d">dkostadinova112@gmail.com</span></a>
-            <div class="contact-socials">
-
-                <a class="soc-btn" href="https://github.com/DianaKostadinova" target="_blank" rel="noopener">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-                    Personal GitHub
-                </a>
-                <a class="soc-btn" href="https://linkedin.com/in/diana-kostadinova" target="_blank" rel="noopener">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-                    LinkedIn
-                </a>
-                <a class="soc-btn" href="https://instagram.com/dianakostadinovaa" target="_blank" rel="noopener">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-                    Instagram
-                </a>
+    <section id="skills" class="section">
+        <div class="container">
+            <p class="sec-label">05 — Skills</p>
+            <div class="skills-groups reveal">
+                <div class="skill-group">
+                    <h4>Frontend</h4>
+                    <div class="tag-row">
+                        <span class="tag">React</span>
+                        <span class="tag">Angular</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">CSS3</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Backend</h4>
+                    <div class="tag-row">
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Kotlin</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">C++</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>ML / AI</h4>
+                    <div class="tag-row">
+                        <span class="tag">Python</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">YOLOv8</span>
+                        <span class="tag">SAM3</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Data & Infra</h4>
+                    <div class="tag-row">
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Git</span>
+                        <span class="tag">Linux</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Mobile</h4>
+                    <div class="tag-row">
+                        <span class="tag">React Native</span>
+                        <span class="tag">Android</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-</div><!-- end #content -->
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="contact-inner reveal">
+                <p class="sec-label">06 — Contact</p>
+                <h2 class="contact-heading">Let's build something together.</h2>
+                <a class="contact-email" href="mailto:dkostadinova112@gmail.com">dkostadinova112@gmail.com →</a>
+                <div class="contact-links">
+                    <a href="https://github.com/DianaKostadinova" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://linkedin.com/in/diana-kostadinova-382a60364" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://instagram.com/dianakostadinovaa" target="_blank" rel="noopener">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
 
 <footer>
-    <p>© 2026 <span>Diana Kostadinova</span>. Scroll to solve.</p>
-    <p>Skopje, MK · Open to opportunities</p>
+    <div class="container footer-inner">
+        <span>© 2026 Diana Kostadinova</span>
+        <span>Skopje, MK · 1st nationally · 2nd worldwide in Blindfolded Rubik's Cube</span>
+    </div>
 </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
 <script src="script.js"></script>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 </body>
 </html>
-
-
