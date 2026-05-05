@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Letter D mark">
+  <defs>
+    <linearGradient id="mid" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%"  stop-color="#0B1E3F"/>
+      <stop offset="100%" stop-color="#14306B"/>
+    </linearGradient>
+    <linearGradient id="gry" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#9AA3AF"/>
+      <stop offset="100%" stop-color="#6B7280"/>
+    </linearGradient>
+    <!-- The D glyph as a clip path. Outer: flat-left + half-circle right.
+         Inner counter: same shape inset by stroke weight. Even-odd fills the ring. -->
+    <clipPath id="dShape" clip-rule="evenodd">
+      <!--
+        Centered D on 512 grid.
+        Glyph width = 224 (flat-edge to arc apex), height = 384.
+        Left edge at x=144, arc apex at x=368  →  margins 144 / 144 ✓
+        Top at y=64, bottom at y=448           →  margins 64 / 64 ✓
+        Outer: flat left from (144,64) to (144,448); arc radius 192, center (144,256).
+        Inner: flat left at (224,160) to (224,352); arc radius 96, center (224,256).
+        Stroke weight = 80u flat, 96u at apex (slight optical thickening).
+      -->
+      <path d="
+        M 144 64
+        L 144 448
+        A 192 192 0 0 0 144 64
+        Z
+        M 224 160
+        L 224 352
+        A 96 96 0 0 0 224 160
+        Z
+      " clip-rule="evenodd"/>
+    </clipPath>
+  </defs>
+
+  <!-- Everything painted only inside the D ring -->
+  <g clip-path="url(#dShape)">
+    <!-- Midnight base fills entire ring -->
+    <rect width="512" height="512" fill="url(#mid)"/>
+    <!-- Gray wedge: diagonal slash from top of flat edge to arc apex,
+         giving a clean two-tone split across the upper-right of the glyph -->
+    <polygon points="144,64 368,64 368,256" fill="url(#gry)"/>
+    <!-- Subtle seam along the diagonal where the two tones meet -->
+    <line x1="144" y1="64" x2="368" y2="256"
+          stroke="#0B1E3F" stroke-width="2" stroke-opacity="0.18"/>
+  </g>
+</svg>
