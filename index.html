@@ -1,337 +1,962 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Diana Kostadinova — Software Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-    <link rel="icon" type="image/svg+xml" href="D-mark.svg"/>
-    <link rel="stylesheet" href="styles.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diana Kostadinova — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #0c0c0c;
+  --surface: #111;
+  --hdr:     #1a1a1a;
+  --border:  #252525;
+  --green:   #3fb950;
+  --cyan:    #58d1b5;
+  --yellow:  #e5c07b;
+  --orange:  #ce9178;
+  --blue:    #79b8ff;
+  --purple:  #b392f0;
+  --comment: #4d8a3e;
+  --text:    #c9d1d9;
+  --dim:     #5a5a5a;
+  --dimmer:  #2e2e2e;
+  --err:     #f47067;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html, body {
+  height: 100%;
+  background: #080808;
+  font-family: 'JetBrains Mono', 'Cascadia Code', 'Courier New', monospace;
+  color: var(--text);
+  font-size: 13px;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+/* ═══════════════ TERMINAL SHELL ═══════════════ */
+.terminal {
+  background: var(--bg);
+  border-radius: 10px;
+  width: 100%;
+  max-width: 960px;
+  height: 92vh;
+  max-height: 860px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 30px 90px rgba(0,0,0,.95), 0 0 0 1px var(--border);
+  overflow: hidden;
+}
+
+/* ═══════════════ TITLE BAR ═══════════════ */
+.titlebar {
+  flex-shrink: 0;
+  background: var(--hdr);
+  padding: 11px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+}
+.dots { display:flex; gap:7px; }
+.dot  { width:13px; height:13px; border-radius:50%; cursor:default; }
+.dot.r { background:#ff5f57; }
+.dot.y { background:#febc2e; }
+.dot.g { background:#28c840; }
+.titlebar-text { flex:1; text-align:center; font-size:11px; color:#3a3a3a; letter-spacing:.4px; }
+
+/* ═══════════════ OUTPUT AREA ═══════════════ */
+.output {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 26px;
+  line-height: 1.65;
+  scroll-behavior: smooth;
+}
+.output::-webkit-scrollbar { width: 4px; }
+.output::-webkit-scrollbar-track { background: transparent; }
+.output::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 2px; }
+
+/* ═══════════════ NAV PILLS ═══════════════ */
+.nav-bar {
+  flex-shrink: 0;
+  padding: 8px 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-top: 1px solid var(--border);
+  background: #0e0e0e;
+}
+.pill {
+  font-family: inherit;
+  font-size: 11px;
+  background: transparent;
+  color: var(--dim);
+  border: 1px solid var(--dimmer);
+  border-radius: 3px;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.pill:hover { border-color: var(--green); color: var(--green); background: #0d1a0d; }
+.pill.active { border-color: var(--cyan); color: var(--cyan); background: #0a1a1a; }
+.pill.special { border-color: #333; color: var(--dim); font-style: italic; }
+
+/* ═══════════════ INPUT BAR ═══════════════ */
+.input-bar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 26px;
+  border-top: 1px solid var(--border);
+  background: #0a0a0a;
+}
+.input-prompt { color: var(--dim); font-size: 12px; white-space: nowrap; flex-shrink:0; }
+.input-prompt .pu { color: var(--comment); }
+.input-prompt .pp { color: #1e3a5f; }
+#cmd {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text);
+  caret-color: var(--green);
+  min-width: 0;
+}
+#cmd::placeholder { color: #2a2a2a; }
+
+/* ═══════════════ OUTPUT CONTENT STYLES ═══════════════ */
+
+/* Ghost / dim prompt echoed back */
+.cmd-echo { color: var(--dim); font-size: 12px; margin: 12px 0 4px; }
+.cmd-echo .ce-user { color: #2a5c2a; }
+.cmd-echo .ce-path { color: #1e3a5f; }
+.cmd-echo .ce-cmd  { color: var(--cyan); }
+
+/* Boot / generic output lines */
+.boot-line  { color: var(--dim); font-size: 12px; }
+.boot-ok    { color: var(--green); }
+.hint-line  { color: var(--comment); font-size: 11.5px; font-style: italic; }
+.err-line   { color: var(--err); font-size: 12px; }
+
+/* ═══ HEADER BLOCK ═══ */
+.header-block { margin: 8px 0 4px; }
+.header-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: start;
+}
+.big-name {
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 3px;
+}
+.big-role {
+  font-size: 11.5px;
+  color: var(--cyan);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.contact-row { font-size: 11.5px; margin: 2px 0; }
+.contact-row .lbl { color: var(--dim); display: inline-block; width: 54px; }
+.contact-row .arr { color: var(--dimmer); margin: 0 5px; }
+.contact-row .val { color: var(--text); }
+.skills-row { margin-top: 12px; }
+.skill-tag {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--yellow);
+  background: #1a1a0e;
+  border: 1px solid #2e2e1a;
+  border-radius: 3px;
+  padding: 1px 7px;
+  margin: 2px 3px 2px 0;
+}
+
+/* ═══ VISUALS BOX (creature + cube) ═══ */
+.visuals-box {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.creature-box, .cube-box {
+  background: #0d0d0d;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px 8px;
+  text-align: center;
+}
+.creature-art {
+  font-size: 11.5px;
+  line-height: 1.38;
+  white-space: pre;
+  color: var(--orange);
+  letter-spacing: 0;
+}
+
+/* animated eyes blink */
+.eye { display: inline; animation: blink-eye 3.5s infinite; }
+@keyframes blink-eye {
+  0%, 90%, 100% { opacity: 1; }
+  95%            { opacity: 0; }
+}
+
+.box-label { font-size: 9.5px; color: var(--comment); margin-top: 6px; font-style: italic; }
+
+/* ═══ RUBIK'S CUBE ═══ */
+.cube-title { font-size: 9.5px; color: var(--comment); font-style: italic; margin-bottom: 6px; }
+.cube-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 20px);
+  grid-template-rows: repeat(3, 20px);
+  gap: 2px;
+  justify-content: center;
+  margin: 0 auto;
+}
+.cube-cell {
+  border-radius: 2px;
+  transition: background-color 0.4s ease;
+}
+.cube-label { font-size: 9px; color: var(--dim); margin-top: 6px; }
+
+/* ═══ LS OUTPUT ═══ */
+.ls-block { margin: 6px 0; }
+.ls-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 12px;
+  padding: 2px 0;
+}
+.ls-perms { color: var(--dim); font-size: 11px; }
+.ls-name  { color: var(--blue); font-weight: 600; min-width: 160px; cursor: pointer; }
+.ls-name:hover { color: var(--cyan); text-decoration: underline; }
+.ls-desc  { color: var(--dim); font-size: 11px; font-style: italic; }
+
+/* ═══ SECTION BLOCKS ═══ */
+.section-block { margin: 8px 0; animation: fadeSlide .25s ease; }
+@keyframes fadeSlide { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:none; } }
+
+.section-title {
+  font-size: 11px;
+  color: var(--comment);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title::after { content:''; flex:1; height:1px; background: var(--border); }
+
+.entry { margin-bottom: 14px; }
+.entry-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.entry-title { font-size: 13.5px; font-weight: 700; color: #fff; }
+.entry-sub   { font-size: 11.5px; color: var(--cyan); font-style: italic; }
+.entry-loc   { font-size: 11px; color: var(--dim); white-space: nowrap; }
+.entry-date  { font-size: 11px; color: var(--dim); font-style: italic; white-space: nowrap; }
+.entry-desc  { font-size: 12px; color: #777; margin-top: 5px; line-height: 1.65; }
+.hl { color: var(--text); font-weight: 600; }
+
+.proj-row { display: flex; gap: 6px; margin-bottom: 10px; }
+.proj-bullet { color: var(--green); flex-shrink: 0; }
+.proj-name { color: #fff; font-weight: 700; font-size: 13px; }
+.proj-body { color: #777; font-size: 12px; line-height: 1.65; }
+.proj-body .hl { color: var(--text); font-weight: 600; }
+
+.pub-row { display: flex; gap: 6px; margin-bottom: 12px; }
+.pub-title { color: #fff; font-weight: 700; font-size: 12.5px; }
+.pub-conf  { color: var(--dim); font-size: 11px; }
+.pub-body  { color: #777; font-size: 12px; margin-top: 4px; line-height: 1.65; }
+.pub-body .hl { color: var(--text); font-weight: 600; }
+
+/* ═══ NAV HINT ═══ */
+.nav-hint {
+  margin: 14px 0 4px;
+  padding: 8px 12px;
+  border: 1px solid var(--dimmer);
+  border-radius: 4px;
+  background: #0e0e0e;
+  font-size: 11.5px;
+}
+.nav-hint-row { color: var(--dim); margin: 2px 0; }
+.nav-hint-row .nh-cmd { color: var(--cyan); cursor: pointer; }
+.nav-hint-row .nh-cmd:hover { text-decoration: underline; }
+.nav-hint-row .nh-arrow { color: var(--comment); margin-right: 6px; }
+
+/* ═══ HELP TABLE ═══ */
+.help-row { display: flex; gap: 16px; font-size: 12px; margin: 3px 0; }
+.help-cmd  { color: var(--cyan); min-width: 140px; }
+.help-desc { color: var(--dim); }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 600px) {
+  body { padding: 0; }
+  .terminal { border-radius: 0; height: 100vh; max-height: none; }
+  .header-grid { grid-template-columns: 1fr; }
+  .visuals-box { justify-content: center; }
+  .output { padding: 14px 16px; }
+  .input-bar, .nav-bar { padding-left: 16px; padding-right: 16px; }
+  .ls-desc { display: none; }
+}
+
+/* blink cursor on input */
+#cmd:focus { }
+</style>
 </head>
 <body>
 
-<div class="bg-orbs" aria-hidden="true">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+<div class="terminal" id="terminal">
+  <div class="titlebar">
+    <div class="dots">
+      <div class="dot r"></div>
+      <div class="dot y"></div>
+      <div class="dot g"></div>
+    </div>
+    <span class="titlebar-text">diana@claude:~/resume — bash — interactive</span>
+  </div>
+
+  <div class="output" id="output"></div>
+
+  <div class="nav-bar" id="nav-bar">
+    <button class="pill special" disabled>shortcuts →</button>
+    <button class="pill" data-cmd="ls">ls</button>
+    <button class="pill" data-cmd="cd education">education/</button>
+    <button class="pill" data-cmd="cd experience">experience/</button>
+    <button class="pill" data-cmd="cd projects">projects/</button>
+    <button class="pill" data-cmd="cd publications">publications/</button>
+    <button class="pill" data-cmd="help">help</button>
+    <button class="pill" data-cmd="clear">clear</button>
+  </div>
+
+  <div class="input-bar">
+    <span class="input-prompt">
+      <span class="pu">diana@claude</span>:<span class="pp" id="cwd">~/resume</span>$&nbsp;
+    </span>
+    <input type="text" id="cmd" autocomplete="off" spellcheck="false" placeholder="type a command...">
+  </div>
 </div>
 
-<nav id="nav">
-    <a class="nav-logo" href="#hero">DK.</a>
-    <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span>
-    </button>
-</nav>
+<script>
+// ══════════════════════════════════════════════
+//  State
+// ══════════════════════════════════════════════
+const out    = document.getElementById('output');
+const input  = document.getElementById('cmd');
+const cwdEl  = document.getElementById('cwd');
+let cmdHistory = [], histIdx = -1;
+let cubeInterval = null;
 
-<main>
+// ══════════════════════════════════════════════
+//  Utilities
+// ══════════════════════════════════════════════
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
 
-    <!-- HERO -->
-    <section id="hero">
-        <div class="hero-inner">
-            <div class="hero-badge">
-                <span class="badge-dot"></span>
-                Currently at Sorsix · Skopje, MK
-            </div>
-            <h1 class="hero-name">Diana<br/>Kostadinova</h1>
-            <p class="hero-desc">Software Engineer · ML Researcher · Builder</p>
-            <div class="hero-actions">
-                <a href="#projects" class="btn btn-primary">View work</a>
-                <a href="#contact" class="btn btn-ghost">Get in touch →</a>
-            </div>
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function scrollBottom() {
+  out.scrollTop = out.scrollHeight;
+}
+
+function appendHTML(html) {
+  const d = document.createElement('div');
+  d.innerHTML = html;
+  out.appendChild(d);
+  scrollBottom();
+  return d;
+}
+
+function appendLine(html, cls='boot-line') {
+  appendHTML(`<div class="${cls}">${html}</div>`);
+}
+
+async function typeText(el, text, speed=18) {
+  for (const ch of text) {
+    el.textContent += ch;
+    scrollBottom();
+    await sleep(speed + Math.random() * 10);
+  }
+}
+
+// Echo a command back to output
+function echoCmd(cmd) {
+  appendHTML(`
+    <div class="cmd-echo">
+      <span class="ce-user">diana@claude</span>:<span class="ce-path">${esc(cwdEl.textContent)}</span>$
+      <span class="ce-cmd"> ${esc(cmd)}</span>
+    </div>`);
+}
+
+// ══════════════════════════════════════════════
+//  Rubik's Cube
+// ══════════════════════════════════════════════
+const CUBE_COLORS = ['#e06c75','#3fb950','#79b8ff','#e5c07b','#d4d4d4','#ce9178'];
+let cubeState = [
+  [0,1,2],
+  [3,4,5],
+  [2,0,3]
+];
+
+function renderCube() {
+  const grid = document.getElementById('cube-grid');
+  if (!grid) return;
+  [...grid.children].forEach((cell, i) => {
+    const r = Math.floor(i / 3), c = i % 3;
+    cell.style.background = CUBE_COLORS[cubeState[r][c]];
+  });
+}
+
+function stepCube() {
+  const move = Math.floor(Math.random() * 6);
+  if (move < 3) {
+    // rotate row left
+    const r = move, [a,b,c] = cubeState[r];
+    cubeState[r] = [b,c,a];
+  } else {
+    // rotate col up
+    const col = move - 3;
+    const t = cubeState[0][col];
+    cubeState[0][col] = cubeState[1][col];
+    cubeState[1][col] = cubeState[2][col];
+    cubeState[2][col] = t;
+  }
+  renderCube();
+}
+
+function initCube() {
+  if (cubeInterval) clearInterval(cubeInterval);
+  // do a quick scramble first
+  for (let i = 0; i < 8; i++) stepCube();
+  renderCube();
+  cubeInterval = setInterval(stepCube, 900);
+}
+
+// ══════════════════════════════════════════════
+//  Header
+// ══════════════════════════════════════════════
+function buildCubeGrid() {
+  let cells = '';
+  for (let i = 0; i < 9; i++) cells += `<div class="cube-cell"></div>`;
+  return cells;
+}
+
+function showHeader() {
+  appendHTML(`
+    <div class="header-block">
+      <div class="header-grid">
+        <div>
+          <div class="big-name">DIANA KOSTADINOVA</div>
+          <div class="big-role">Software Engineer</div>
+          <div class="contact-row"><span class="lbl">email</span><span class="arr">›</span><span class="val">dkostadinova112@gmail.com</span></div>
+          <div class="contact-row"><span class="lbl">phone</span><span class="arr">›</span><span class="val">+38976802347</span></div>
+          <div class="contact-row"><span class="lbl">web</span><span class="arr">›</span><span class="val">dianakostadinova.github.io</span></div>
+          <div class="contact-row"><span class="lbl">linkedin</span><span class="arr">›</span><span class="val">Diana Kostadinova</span></div>
+          <div class="skills-row">
+            <span class="skill-tag">Angular</span>
+            <span class="skill-tag">Kotlin / Java Spring Boot</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">AI/ML Concepts</span>
+          </div>
         </div>
-        <div class="hero-scroll">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
+
+        <div class="visuals-box">
+          <!-- Creature -->
+          <div class="creature-box">
+            <pre class="creature-art">    .-----------.
+   /  <span class="eye">@</span>         <span class="eye">@</span>  \\
+  |    \\  ___  /    |
+  |     \`-----'     |
+  |   ~~~~~~~~~~~   |
+   \\               /
+    \`------+------'
+           |
+         .-+-.
+        /     \\
+        \`-----'</pre>
+            <div class="box-label">// claude.exe&nbsp;[running]</div>
+          </div>
+
+          <!-- Rubik's Cube -->
+          <div class="cube-box">
+            <div class="cube-title">// rubik.exe&nbsp;[solving]</div>
+            <div class="cube-grid" id="cube-grid">${buildCubeGrid()}</div>
+            <div class="cube-label">achievement unlocked 🎲</div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>`);
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
-        <div class="container">
-            <p class="sec-label">01 — About</p>
-            <div class="about-grid">
-                <div class="about-text reveal">
-                    <p>Software Engineering student at UKIM (GPA 8.5/10), currently interning at <strong>Sorsix</strong> — building full-stack systems with Angular, Kotlin, Spring Boot, and PostgreSQL.</p>
-                    <p>I like understanding how things work at a low level. Reading source code, tracing bugs to their root cause, figuring out why an abstraction breaks. The same drive applies whether I'm optimising a query, debugging a model, or solving a Rubik's Cube blindfolded.</p>
-                    <p>I work across mobile, web, and ML pipelines. I tend to go deep on whatever I'm building rather than staying on the surface.</p>
-                </div>
-                <div class="about-stats reveal">
-                    <div class="stat-item">
-                        <span class="stat-value">25+</span>
-                        <span class="stat-label">Technologies</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">4+</span>
-                        <span class="stat-label">Projects shipped</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">2</span>
-                        <span class="stat-label">Publications</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">8.5/10</span>
-                        <span class="stat-label">GPA</span>
-                    </div>
-                </div>
-            </div>
+  initCube();
+}
+
+// ══════════════════════════════════════════════
+//  Nav hint shown after each section
+// ══════════════════════════════════════════════
+function navHint(backCmd, nextLabel, nextCmd) {
+  const backPart = backCmd ? `<div class="nav-hint-row"><span class="nh-arrow">←</span> <span class="nh-cmd" onclick="run('${backCmd}')">${backCmd}</span> <span style="color:var(--dim)">  go back</span></div>` : '';
+  const nextPart = nextCmd ? `<div class="nav-hint-row"><span class="nh-arrow">→</span> <span class="nh-cmd" onclick="run('${nextCmd}')">${nextCmd}</span> <span style="color:var(--dim)">  ${nextLabel}</span></div>` : '';
+  appendHTML(`<div class="nav-hint">${backPart}${nextPart}</div>`);
+}
+
+// ══════════════════════════════════════════════
+//  Sections
+// ══════════════════════════════════════════════
+function sectionTitle(label) {
+  return `<div class="section-title">${label}</div>`;
+}
+
+function showEducation() {
+  cwdEl.textContent = '~/resume/education';
+  appendHTML(`
+    <div class="section-block">
+      ${sectionTitle('Education')}
+      <div class="entry">
+        <div class="entry-top">
+          <span class="entry-title">Faculty of Computer Science and Engineering, UKIM</span>
+          <span class="entry-loc">Skopje, N. Macedonia</span>
         </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
-        <div class="container">
-            <p class="sec-label">02 — Experience & Education</p>
-            <div class="timeline">
-
-                <div class="tl-row reveal">
-                    <div class="tl-left">
-                        <span class="tl-year">2026 – Now</span>
-                    </div>
-                    <div class="tl-right">
-                        <div class="tl-header">
-                            <h3>Software Engineer Intern</h3>
-                            <span class="tl-company">Sorsix · Skopje, N. Macedonia</span>
-                        </div>
-                        <p>Mentored in a modern web development stack with focus on scalable architecture and design patterns. Built hands-on projects in Angular, Kotlin, Spring Boot, and PostgreSQL — culminating in a full-stack application.</p>
-                        <div class="tag-row">
-                            <span class="tag">Angular</span>
-                            <span class="tag">Kotlin</span>
-                            <span class="tag">Spring Boot</span>
-                            <span class="tag">PostgreSQL</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tl-row reveal">
-                    <div class="tl-left">
-                        <span class="tl-year">2024 – 2028</span>
-                    </div>
-                    <div class="tl-right">
-                        <div class="tl-header">
-                            <h3>BSc Software Engineering & Information Systems</h3>
-                            <span class="tl-company">UKIM, Faculty of Computer Science · Skopje</span>
-                        </div>
-                        <p>GPA 8.5 / 10.0</p>
-                    </div>
-                </div>
-
-            </div>
+        <div class="entry-top" style="margin-top:2px">
+          <span class="entry-sub">Bachelor of Software Engineering and Information Systems &nbsp;·&nbsp; GPA: 8.5/10.0</span>
+          <span class="entry-date">Oct 2024 – June 2028</span>
         </div>
-    </section>
+      </div>
+    </div>`);
+  navHint('cd ..', 'jump to experience', 'cd experience');
+  highlightPill('cd education');
+}
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-        <div class="container">
-            <p class="sec-label">03 — Projects</p>
-            <div class="proj-list">
-
-                <div class="proj-item reveal">
-                    <div class="proj-meta">
-                        <span class="proj-num">01</span>
-                        <span class="proj-status live">Building</span>
-                    </div>
-                    <div class="proj-content">
-                        <h3>Labely.ai</h3>
-                        <p>Multi-domain AI annotation platform reducing manual labeling effort by up to 70% via prompt-driven segmentation and human-in-the-loop refinement. Specialized pipelines for medical imaging (SAM3), industrial defect detection (PatchCore), and logo recognition (ResNet18).</p>
-                        <div class="tag-row">
-                            <span class="tag">FastAPI</span>
-                            <span class="tag">Spring Boot</span>
-                            <span class="tag">SAM3</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">PostgreSQL</span>
-                            <span class="tag">Cloudflare R2</span>
-                        </div>
-                    </div>
-                    <a href="https://github.com/LabelyAI" class="proj-link" target="_blank" rel="noopener">GitHub →</a>
-                </div>
-
-                <div class="proj-item reveal">
-                    <div class="proj-meta">
-                        <span class="proj-num">02</span>
-                        <span class="proj-status done">Shipped</span>
-                    </div>
-                    <div class="proj-content">
-                        <h3>Skope</h3>
-                        <p>Tourism mobile app that identifies landmarks in real time using YOLOv8 via Roboflow. Built with React Native and backed by a Python + FastAPI inference server — combining AI processing with a clean, fast interface for tourists.</p>
-                        <div class="tag-row">
-                            <span class="tag">React Native</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">FastAPI</span>
-                            <span class="tag">YOLOv8</span>
-                            <span class="tag">Roboflow</span>
-                        </div>
-                    </div>
-                    <a href="https://github.com/DianaKostadinova/Skope" class="proj-link" target="_blank" rel="noopener">GitHub →</a>
-                </div>
-
-                <div class="proj-item reveal">
-                    <div class="proj-meta">
-                        <span class="proj-num">03</span>
-                        <span class="proj-status done">Shipped</span>
-                    </div>
-                    <div class="proj-content">
-                        <h3>KonKat</h3>
-                        <p>Professional networking platform focused on direct, community-driven connection. Full-stack: Angular front-end, Kotlin and Spring Boot back-end, PostgreSQL for data persistence — covering user profiles, posts, follows, and real-time interactions.</p>
-                        <div class="tag-row">
-                            <span class="tag">Angular</span>
-                            <span class="tag">Kotlin</span>
-                            <span class="tag">Spring Boot</span>
-                            <span class="tag">PostgreSQL</span>
-                        </div>
-                    </div>
-                    <a href="https://github.com/DianaKostadinova" class="proj-link" target="_blank" rel="noopener">GitHub →</a>
-                </div>
-
-                <div class="proj-item reveal">
-                    <div class="proj-meta">
-                        <span class="proj-num">04</span>
-                        <span class="proj-status done">Shipped</span>
-                    </div>
-                    <div class="proj-content">
-                        <h3>Discover Macedonia</h3>
-                        <p>Dynamic travel platform built with React and Firebase. Integrates the OpenAI API and Hugging Face AI models to deliver AI-powered destination guides and interactive experiences for exploring Macedonia.</p>
-                        <div class="tag-row">
-                            <span class="tag">React</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">OpenAI API</span>
-                            <span class="tag">TypeScript</span>
-                        </div>
-                    </div>
-                    <a href="https://discovermacedonia.vercel.app" class="proj-link" target="_blank" rel="noopener">Live →</a>
-                </div>
-
-            </div>
+function showExperience() {
+  cwdEl.textContent = '~/resume/experience';
+  appendHTML(`
+    <div class="section-block">
+      ${sectionTitle('Experience')}
+      <div class="entry">
+        <div class="entry-top">
+          <span class="entry-title">Sorsix, Skopje <span style="color:var(--dim);font-weight:400;font-size:11px">(Internship)</span></span>
+          <span class="entry-loc">Skopje, N. Macedonia</span>
         </div>
-    </section>
-
-    <!-- RESEARCH -->
-    <section id="research" class="section">
-        <div class="container">
-            <p class="sec-label">04 — Research</p>
-            <div class="pub-list">
-
-                <div class="pub-item reveal">
-                    <span class="pub-num">01</span>
-                    <div class="pub-content">
-                        <h3>Hybrid Embedding and Classification Framework for Landmark Recognition with Limited Data</h3>
-                        <p>Designed a hybrid metric-classification model for few-shot landmark recognition. Combined metric learning with a classification branch and aggressive data augmentation to handle extremely limited datasets (~30 images per class), achieving ~75% classification accuracy across Macedonian landmarks.</p>
-                        <div class="tag-row">
-                            <span class="tag">Python</span>
-                            <span class="tag">PyTorch</span>
-                            <span class="tag">Few-Shot Learning</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pub-item reveal">
-                    <span class="pub-num">02</span>
-                    <div class="pub-content">
-                        <h3>Prompt-Based Annotation Framework for Large-Scale Visual Datasets</h3>
-                        <p>Co-authored research on an AI-assisted annotation platform built on the SAM3 foundation model. Specialized pipelines for medical imaging, industrial defect detection, and logo recognition consistently outperform the base model. Scalable microservice architecture with FastAPI, Spring Boot, Cloudflare R2, and PostgreSQL.</p>
-                        <div class="tag-row">
-                            <span class="tag">SAM3</span>
-                            <span class="tag">FastAPI</span>
-                            <span class="tag">Spring Boot</span>
-                            <span class="tag">Python</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="entry-top" style="margin-top:2px">
+          <span class="entry-sub">Software Engineer Intern &nbsp;·&nbsp; Angular, Kotlin Spring Boot, PostgreSQL</span>
+          <span class="entry-date">Mar 2026 – Present</span>
         </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section">
-        <div class="container">
-            <p class="sec-label">05 — Skills</p>
-            <div class="skills-groups reveal">
-                <div class="skill-group">
-                    <h4>Frontend</h4>
-                    <div class="tag-row">
-                        <span class="tag">React</span>
-                        <span class="tag">Angular</span>
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">CSS3</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <h4>Backend</h4>
-                    <div class="tag-row">
-                        <span class="tag">Spring Boot</span>
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Kotlin</span>
-                        <span class="tag">Java</span>
-                        <span class="tag">C++</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <h4>ML / AI</h4>
-                    <div class="tag-row">
-                        <span class="tag">Python</span>
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">TensorFlow</span>
-                        <span class="tag">YOLOv8</span>
-                        <span class="tag">SAM3</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <h4>Data & Infra</h4>
-                    <div class="tag-row">
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">Firebase</span>
-                        <span class="tag">MongoDB</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">Git</span>
-                        <span class="tag">Linux</span>
-                    </div>
-                </div>
-                <div class="skill-group">
-                    <h4>Mobile</h4>
-                    <div class="tag-row">
-                        <span class="tag">React Native</span>
-                        <span class="tag">Android</span>
-                    </div>
-                </div>
-            </div>
+        <div class="entry-desc">
+          Contributed to full-stack web application development in a production environment, working across
+          <span class="hl">backend</span> and <span class="hl">frontend</span> components. Built scalable features,
+          wrote <span class="hl">unit tests</span>, supported database-driven functionality, and worked with
+          <span class="hl">deployment workflows</span>. Strengthened understanding of
+          <span class="hl">data modeling</span>, persistence, and service consistency.
         </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="contact-inner reveal">
-                <p class="sec-label">06 — Contact</p>
-                <h2 class="contact-heading">Let's build something together.</h2>
-                <a class="contact-email" href="mailto:dkostadinova112@gmail.com">dkostadinova112@gmail.com →</a>
-                <div class="contact-links">
-                    <a href="https://github.com/DianaKostadinova" target="_blank" rel="noopener">GitHub</a>
-                    <a href="https://linkedin.com/in/diana-kostadinova-382a60364" target="_blank" rel="noopener">LinkedIn</a>
-                    <a href="https://instagram.com/dianakostadinovaa" target="_blank" rel="noopener">Instagram</a>
-                </div>
-            </div>
+        <div class="entry-desc" style="margin-top:4px">
+          Implemented responsive UI using modern <span class="hl">reactive patterns</span>. Applied
+          <span class="hl">clean architecture</span> and design patterns while resolving real development issues.
+          Delivered a functional <span class="hl">flashcards application</span> as a final project on the same stack.
         </div>
-    </section>
+      </div>
+    </div>`);
+  navHint('cd ..', 'jump to projects', 'cd projects');
+  highlightPill('cd experience');
+}
 
-</main>
+function showProjects() {
+  cwdEl.textContent = '~/resume/projects';
+  appendHTML(`
+    <div class="section-block">
+      ${sectionTitle('Projects')}
 
-<footer>
-    <div class="container footer-inner">
-        <span>© 2026 Diana Kostadinova</span>
-        <span>Skopje, MK · 1st nationally · 2nd worldwide in Blindfolded Rubik's Cube</span>
-    </div>
-</footer>
+      <div class="proj-row">
+        <span class="proj-bullet">▸</span>
+        <div>
+          <div class="proj-name">LabelyAI</div>
+          <div class="proj-body">Multi-domain AI annotation platform reducing manual labeling by <span class="hl">70%</span>
+          via prompt-driven segmentation and human-in-the-loop refinement. Uses <span class="hl">SAM3</span> with
+          domain-adaptive pipelines for medical imaging, industrial defect detection (<span class="hl">PatchCore</span>),
+          and logo recognition (<span class="hl">ResNet18</span>).
+          Backend: <span class="hl">FastAPI</span>, Spring Boot, Cloudflare R2, PostgreSQL.</div>
+        </div>
+      </div>
 
-<script src="script.js"></script>
+      <div class="proj-row">
+        <span class="proj-bullet">▸</span>
+        <div>
+          <div class="proj-name">Skope</div>
+          <div class="proj-body">Tourism mobile app with <span class="hl">React Native</span> identifying landmarks
+          in real time. Leveraged <span class="hl">Python</span>, FastAPI, and Roboflow with
+          <span class="hl">YOLOv8</span> for object detection on extensively cleaned and annotated datasets.</div>
+        </div>
+      </div>
+
+      <div class="proj-row">
+        <span class="proj-bullet">▸</span>
+        <div>
+          <div class="proj-name">KonKat</div>
+          <div class="proj-body">Professional networking platform similar to LinkedIn. Built with
+          <span class="hl">Angular</span> frontend, <span class="hl">Kotlin + Spring Boot</span> backend, and
+          <span class="hl">PostgreSQL</span> — covering user profiles, posts, follows, and real-time interaction.</div>
+        </div>
+      </div>
+
+      <div class="proj-row">
+        <span class="proj-bullet">▸</span>
+        <div>
+          <div class="proj-name">DiscoverMacedonia</div>
+          <div class="proj-body">Web app using <span class="hl">React</span> and <span class="hl">Firebase</span>,
+          integrating multiple APIs and LLMs via the <span class="hl">OpenAI API</span>. Hands-on experience with
+          Hugging Face AI models and AI agents.</div>
+        </div>
+      </div>
+    </div>`);
+  navHint('cd ..', 'jump to publications', 'cd publications');
+  highlightPill('cd projects');
+}
+
+function showPublications() {
+  cwdEl.textContent = '~/resume/publications';
+  appendHTML(`
+    <div class="section-block">
+      ${sectionTitle('Publications')}
+
+      <div class="pub-row">
+        <span class="proj-bullet">▸</span>
+        <div>
+          <div><span class="pub-title">Hybrid Embedding and Classification Framework for Landmark Recognition with Limited Data</span>
+          <span class="pub-conf"> — CiiT 2026</span></div>
+          <div class="pub-body">Hybrid metric-classification model for few-shot landmark recognition using
+          <span class="hl">Python</span> and <span class="hl">PyTorch</span>. Combined metric learning with
+          classification branch and aggressive data augmentation (~30 images/class). Achieved
+          <span class="hl">~75% classification accuracy</span> across Macedonian landmarks.</div>
+        </div>
+      </div>
+
+      <div class="pub-row">
+        <span class="proj-bullet">▸</span>
+        <div>
+          <div><span class="pub-title">Prompt-Based Annotation Framework for Large-Scale Visual Datasets</span>
+          <span class="pub-conf"> — CiiT 2026</span></div>
+          <div class="pub-body">AI-assisted visual annotation framework reducing manual labeling via domain-adaptive
+          model specialization. Extends <span class="hl">SAM3</span> with task-specific adaptations for medical
+          imaging, industrial inspection, and logo recognition. Scalable distributed architecture for automated
+          mask generation and anomaly estimation.</div>
+        </div>
+      </div>
+    </div>`);
+  navHint('cd ..', null, null);
+  highlightPill('cd publications');
+}
+
+// ══════════════════════════════════════════════
+//  ls output
+// ══════════════════════════════════════════════
+function showLs() {
+  cwdEl.textContent = '~/resume';
+  const rows = [
+    ['education/',    'Bachelor of SE &amp; IS, UKIM Skopje · GPA 8.5'],
+    ['experience/',   'Sorsix Internship · Angular, Kotlin, PostgreSQL'],
+    ['projects/',     'LabelyAI · Skope · KonKat · DiscoverMacedonia'],
+    ['publications/', '2 papers at CiiT 2026'],
+  ];
+  let html = `<div class="ls-block">`;
+  rows.forEach(([name, desc]) => {
+    const cmd = 'cd ' + name.replace('/','');
+    html += `
+      <div class="ls-row">
+        <span class="ls-perms">drwxr-xr-x</span>
+        <span class="ls-name" onclick="run('${cmd}')">${name}</span>
+        <span class="ls-desc">${desc}</span>
+      </div>`;
+  });
+  html += `</div>`;
+  appendHTML(html);
+  appendHTML(`<div class="hint-line" style="margin-top:6px">type <span style="color:var(--cyan)">cd &lt;name&gt;</span> or click a folder to open it.</div>`);
+}
+
+// ══════════════════════════════════════════════
+//  help
+// ══════════════════════════════════════════════
+function showHelp() {
+  const cmds = [
+    ['whoami',           'display your identity'],
+    ['ls',               'list all resume sections'],
+    ['cd education',     'open education section'],
+    ['cd experience',    'open experience section'],
+    ['cd projects',      'open projects section'],
+    ['cd publications',  'open publications section'],
+    ['cd ..',            'go back to root'],
+    ['cat skills.txt',   'print tech stack'],
+    ['cat readme.md',    'about me'],
+    ['npm install',      'download the portfolio'],
+    ['clear',            'clear the terminal'],
+    ['help',             'show this message'],
+  ];
+  let html = `<div style="margin:6px 0">`;
+  cmds.forEach(([c,d]) => {
+    html += `<div class="help-row"><span class="help-cmd">${c}</span><span class="help-desc">${d}</span></div>`;
+  });
+  html += `</div>`;
+  appendHTML(html);
+}
+
+// ══════════════════════════════════════════════
+//  README
+// ══════════════════════════════════════════════
+function showReadme() {
+  appendHTML(`
+    <div class="section-block" style="font-size:12px;line-height:1.8">
+      <div style="color:#fff;font-weight:700;font-size:15px;margin-bottom:6px"># Diana Kostadinova</div>
+      <div style="color:var(--dim);margin-bottom:12px;font-style:italic">> Building things that matter with code that runs.</div>
+
+      <div style="color:var(--text);margin-bottom:10px">
+        Software engineering student at <span class="hl">FCSE UKIM</span> with a passion for full-stack
+        development and AI. Currently interning at <span class="hl">Sorsix</span>, shipping features in
+        Angular + Kotlin Spring Boot in a real production environment.
+      </div>
+      <div style="color:var(--text);margin-bottom:14px">
+        I've built AI annotation platforms, landmark-recognition apps, and published two papers at
+        <span class="hl">CiiT 2026</span> — all while keeping my Rubik's cube solve time respectable.
+      </div>
+
+      <div style="color:var(--comment);margin-bottom:4px">## find me</div>
+      <div class="contact-row"><span class="lbl">web</span><span class="arr">›</span><span class="val">dianakostadinova.github.io</span></div>
+      <div class="contact-row"><span class="lbl">github</span><span class="arr">›</span><span class="val">github.com/DianaKostadinova</span></div>
+      <div class="contact-row"><span class="lbl">email</span><span class="arr">›</span><span class="val">dkostadinova112@gmail.com</span></div>
+    </div>`);
+}
+
+// ══════════════════════════════════════════════
+//  npm install (animated)
+// ══════════════════════════════════════════════
+async function npmInstall() {
+  input.disabled = true;
+
+  const wrap = appendHTML(`<div style="font-size:12px;line-height:1.9"></div>`).firstChild;
+
+  const packages = [
+    { name: 'angular-skills',        version: '17.3.0',  label: 'Angular'              },
+    { name: 'kotlin-spring-boot',    version: '3.2.4',   label: 'Kotlin + Spring Boot' },
+    { name: 'postgresql-driver',     version: '42.7.1',  label: 'PostgreSQL'           },
+    { name: 'react-native-vision',   version: '4.0.2',   label: 'React Native'         },
+    { name: 'pytorch-metric-learn',  version: '1.3.0',   label: 'PyTorch'              },
+    { name: 'fastapi-async',         version: '0.110.0', label: 'FastAPI'              },
+    { name: 'sam3-foundation',       version: '3.0.1',   label: 'SAM3'                 },
+    { name: 'diana-kostadinova',     version: 'latest',  label: null                   },
+  ];
+
+  const addLine = (html) => {
+    const d = document.createElement('div');
+    d.innerHTML = html;
+    wrap.appendChild(d);
+    scrollBottom();
+  };
+
+  addLine(`<span style="color:var(--dim)">npm warn</span> <span style="color:var(--yellow)">deprecated resume@1.0.0:</span> <span style="color:var(--dim)">use diana@latest instead</span>`);
+  await sleep(400);
+  addLine(`<span style="color:var(--dim)">npm notice</span> downloading portfolio...`);
+  await sleep(600);
+
+  for (const pkg of packages) {
+    await sleep(180 + Math.random() * 220);
+    const bar = '█'.repeat(Math.floor(Math.random() * 6 + 8));
+    addLine(`  <span style="color:var(--comment)">▸</span> <span style="color:var(--cyan)">${pkg.name}</span><span style="color:var(--dim)">@${pkg.version}</span>`);
+  }
+
+  await sleep(400);
+  addLine(`<br><span style="color:var(--green)">added ${packages.length} packages</span> <span style="color:var(--dim)">in ${(1.2 + Math.random()).toFixed(1)}s</span>`);
+  await sleep(300);
+
+  // trigger CV download
+  const a = document.createElement('a');
+  a.href = './DianaKostadinova-CV.pdf';
+  a.download = 'DianaKostadinova-CV.pdf';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+  appendHTML(`
+    <div style="margin:10px 0 4px;padding:10px 14px;border:1px solid var(--comment);border-radius:4px;background:#0d140d;font-size:12px;line-height:1.9">
+      <div style="color:var(--green);font-weight:700;margin-bottom:4px">✓ diana-kostadinova@latest installed</div>
+      <div style="color:var(--dim)">saved            <span style="color:var(--yellow)">DianaKostadinova-CV.pdf</span> → your downloads</div>
+      <div style="color:var(--dim)">open in browser  <span style="color:var(--blue);cursor:pointer" onclick="window.open('https://dianakostadinova.github.io','_blank')">→ dianakostadinova.github.io</span></div>
+      <div style="color:var(--dim)">run              <span style="color:var(--cyan);cursor:pointer" onclick="run('cd projects')">cd projects</span> to see what's inside</div>
+    </div>`);
+
+  input.disabled = false;
+  input.focus();
+}
+
+// ══════════════════════════════════════════════
+//  Command handler
+// ══════════════════════════════════════════════
+const SECTIONS = {
+  education:    showEducation,
+  experience:   showExperience,
+  projects:     showProjects,
+  publications: showPublications,
+};
+
+const ALIASES = { work: 'experience', papers: 'publications', pub: 'publications', edu: 'education', proj: 'projects' };
+
+function run(raw) {
+  const cmd  = raw.trim();
+  const norm = cmd.toLowerCase();
+
+  if (cmd) { cmdHistory.unshift(cmd); histIdx = -1; }
+
+  echoCmd(cmd);
+
+  if (norm === 'clear') {
+    out.innerHTML = ''; showHeader(); return;
+  }
+  if (norm === 'whoami') {
+    appendLine('<span style="color:#fff;font-weight:700">diana kostadinova</span> — software engineer', 'boot-line');
+    return;
+  }
+  if (norm === 'ls' || norm === 'ls -la' || norm === 'ls -l') {
+    showLs(); return;
+  }
+  if (norm === 'help' || norm === '--help' || norm === '-h') {
+    showHelp(); return;
+  }
+  if (norm === 'cat skills.txt' || norm === 'skills') {
+    appendHTML(`<div style="margin:4px 0;font-size:12px">
+      <span class="skill-tag">Angular</span>
+      <span class="skill-tag">Kotlin / Java Spring Boot</span>
+      <span class="skill-tag">PostgreSQL</span>
+      <span class="skill-tag">AI/ML Concepts</span>
+    </div>`);
+    return;
+  }
+  if (norm === 'cd ..' || norm === 'cd ~' || norm === 'cd' || norm === 'cd ~/resume') {
+    cwdEl.textContent = '~/resume';
+    appendLine('<span style="color:var(--dim)">back at ~/resume</span>');
+    highlightPill(null);
+    return;
+  }
+  if (norm.startsWith('cd ')) {
+    let target = norm.slice(3).trim().replace(/\/$/, '');
+    target = ALIASES[target] || target;
+    if (SECTIONS[target]) { SECTIONS[target](); return; }
+    appendLine(`<span class="err-line">cd: ${esc(target)}: No such file or directory</span>`);
+    appendHTML(`<div class="hint-line">Try <span style="color:var(--cyan);cursor:pointer" onclick="run('ls')">ls</span> to see what's available.</div>`);
+    return;
+  }
+  // cat readme.md
+  if (norm === 'cat readme.md' || norm === 'readme' || norm === 'cat readme') {
+    showReadme(); return;
+  }
+  // npm install
+  if (norm === 'npm install' || norm === 'npm i' || norm === 'npm install diana' || norm === 'npm i diana') {
+    npmInstall(); return;
+  }
+  // Easter eggs
+  if (norm.includes('sudo')) {
+    appendLine('<span style="color:var(--err)">permission denied: you are not in the sudoers file.</span>'); return;
+  }
+  if (norm === 'pwd') { appendLine(cwdEl.textContent); return; }
+  if (norm === 'date') { appendLine(new Date().toString(), 'boot-line'); return; }
+  if (norm === 'uname') { appendLine('claude-os 4.0.0 #1 SMP Anthropic', 'boot-line'); return; }
+  if (norm === '') return;
+
+  appendLine(`<span class="err-line">bash: ${esc(cmd.split(' ')[0])}: command not found</span>`);
+  appendHTML(`<div class="hint-line">Type <span style="color:var(--cyan);cursor:pointer" onclick="run('help')">help</span> to see available commands.</div>`);
+}
+
+// ══════════════════════════════════════════════
+//  Pill highlight
+// ══════════════════════════════════════════════
+function highlightPill(cmd) {
+  document.querySelectorAll('.pill').forEach(p => {
+    p.classList.toggle('active', p.dataset.cmd === cmd);
+  });
+}
+
+// ══════════════════════════════════════════════
+//  Input listeners
+// ══════════════════════════════════════════════
+input.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    run(input.value);
+    input.value = '';
+    histIdx = -1;
+  }
+  if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    if (histIdx < cmdHistory.length - 1) { histIdx++; input.value = cmdHistory[histIdx]; }
+  }
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    if (histIdx > 0) { histIdx--; input.value = cmdHistory[histIdx]; }
+    else { histIdx = -1; input.value = ''; }
+  }
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    const v = input.value.trim().toLowerCase();
+    const completions = ['cd education','cd experience','cd projects','cd publications','ls','help','clear','whoami','cat skills.txt','cat readme.md','npm install'];
+    const match = completions.find(c => c.startsWith(v) && c !== v);
+    if (match) input.value = match;
+  }
+});
+
+// Pills click
+document.querySelectorAll('.pill[data-cmd]').forEach(p => {
+  p.addEventListener('click', () => { run(p.dataset.cmd); input.focus(); });
+});
+
+// Click terminal to focus input
+document.getElementById('terminal').addEventListener('click', () => input.focus());
+
+// ══════════════════════════════════════════════
+//  Boot sequence
+// ══════════════════════════════════════════════
+async function boot() {
+  const lines = [
+    { text: 'Initializing diana@claude', ok: true, delay: 60 },
+    { text: 'Loading resume.json', ok: true, delay: 40 },
+    { text: 'Mounting /dev/experience', ok: true, delay: 50 },
+    { text: 'Starting rubik.exe', ok: true, delay: 30 },
+  ];
+
+  for (const l of lines) {
+    const d = appendHTML(`<div class="boot-line">${esc(l.text)}</div>`);
+    const el = d.querySelector('div');
+    await sleep(l.delay * 3);
+    el.innerHTML += ' <span style="color:var(--dim)">............</span> <span class="boot-ok">[OK]</span>';
+    scrollBottom();
+    await sleep(80);
+  }
+
+  await sleep(200);
+  appendHTML(`<div style="height:10px"></div>`);
+  showHeader();
+
+  await sleep(300);
+  appendHTML(`<div class="hint-line" style="margin-top:10px">
+    Welcome! Type <span style="color:var(--cyan);cursor:pointer" onclick="run('ls')">ls</span> to explore,
+    <span style="color:var(--cyan);cursor:pointer" onclick="run('help')">help</span> for all commands,
+    or use the shortcuts below. &nbsp;<span style="color:var(--dim)">Tab</span> auto-completes.
+  </div>`);
+  scrollBottom();
+  input.focus();
+}
+
+boot();
+</script>
 </body>
 </html>

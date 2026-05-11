@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Diana Kostadinova — Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link rel="icon" type="image/svg+xml" href="D-mark.svg"/>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+<nav id="nav">
+    <a class="nav-logo" href="#hero">DK.</a>
+    <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span>
+    </button>
+</nav>
+
+<main>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-inner">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Currently at Sorsix · Skopje, MK
+            </div>
+            <h1 class="hero-name">Diana<br/>Kostadinova</h1>
+            <p class="hero-desc">Software Engineer · ML Researcher · Builder</p>
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">View work</a>
+                <a href="#contact" class="btn btn-ghost">Get in touch →</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+        <div class="container">
+            <p class="sec-label">01 — About</p>
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p>Software Engineering student at UKIM (GPA 8.5/10), currently interning at <strong>Sorsix</strong> — building full-stack systems with Angular, Kotlin, Spring Boot, and PostgreSQL.</p>
+                    <p>I like understanding how things work at a low level. Reading source code, tracing bugs to their root cause, figuring out why an abstraction breaks. The same drive applies whether I'm optimising a query, debugging a model, or solving a Rubik's Cube blindfolded.</p>
+                    <p>I work across mobile, web, and ML pipelines. I tend to go deep on whatever I'm building rather than staying on the surface.</p>
+                </div>
+                <div class="about-stats reveal">
+                    <div class="stat-item">
+                        <span class="stat-value">25+</span>
+                        <span class="stat-label">Technologies</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">4+</span>
+                        <span class="stat-label">Projects shipped</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">2</span>
+                        <span class="stat-label">Publications</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">8.5/10</span>
+                        <span class="stat-label">GPA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+        <div class="container">
+            <p class="sec-label">02 — Experience & Education</p>
+            <div class="timeline">
+
+                <div class="tl-row reveal">
+                    <div class="tl-left">
+                        <span class="tl-year">2026 – Now</span>
+                    </div>
+                    <div class="tl-right">
+                        <div class="tl-header">
+                            <h3>Software Engineer Intern</h3>
+                            <span class="tl-company">Sorsix · Skopje, N. Macedonia</span>
+                        </div>
+                        <p>Mentored in a modern web development stack with focus on scalable architecture and design patterns. Built hands-on projects in Angular, Kotlin, Spring Boot, and PostgreSQL — culminating in a full-stack application.</p>
+                        <div class="tag-row">
+                            <span class="tag">Angular</span>
+                            <span class="tag">Kotlin</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-row reveal">
+                    <div class="tl-left">
+                        <span class="tl-year">2024 – 2028</span>
+                    </div>
+                    <div class="tl-right">
+                        <div class="tl-header">
+                            <h3>BSc Software Engineering & Information Systems</h3>
+                            <span class="tl-company">UKIM, Faculty of Computer Science · Skopje</span>
+                        </div>
+                        <p>GPA 8.5 / 10.0</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+        <div class="container">
+            <p class="sec-label">03 — Projects</p>
+            <div class="proj-list">
+
+                <div class="proj-item reveal">
+                    <div class="proj-meta">
+                        <span class="proj-num">01</span>
+                        <span class="proj-status live">Building</span>
+                    </div>
+                    <div class="proj-content">
+                        <h3>Labely.ai</h3>
+                        <p>Multi-domain AI annotation platform reducing manual labeling effort by up to 70% via prompt-driven segmentation and human-in-the-loop refinement. Specialized pipelines for medical imaging (SAM3), industrial defect detection (PatchCore), and logo recognition (ResNet18).</p>
+                        <div class="tag-row">
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">SAM3</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">Cloudflare R2</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/LabelyAI" class="proj-link" target="_blank" rel="noopener">GitHub →</a>
+                </div>
+
+                <div class="proj-item reveal">
+                    <div class="proj-meta">
+                        <span class="proj-num">02</span>
+                        <span class="proj-status done">Shipped</span>
+                    </div>
+                    <div class="proj-content">
+                        <h3>Skope</h3>
+                        <p>Tourism mobile app that identifies landmarks in real time using YOLOv8 via Roboflow. Built with React Native and backed by a Python + FastAPI inference server — combining AI processing with a clean, fast interface for tourists.</p>
+                        <div class="tag-row">
+                            <span class="tag">React Native</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">YOLOv8</span>
+                            <span class="tag">Roboflow</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/DianaKostadinova/Skope" class="proj-link" target="_blank" rel="noopener">GitHub →</a>
+                </div>
+
+                <div class="proj-item reveal">
+                    <div class="proj-meta">
+                        <span class="proj-num">03</span>
+                        <span class="proj-status done">Shipped</span>
+                    </div>
+                    <div class="proj-content">
+                        <h3>KonKat</h3>
+                        <p>Professional networking platform focused on direct, community-driven connection. Full-stack: Angular front-end, Kotlin and Spring Boot back-end, PostgreSQL for data persistence — covering user profiles, posts, follows, and real-time interactions.</p>
+                        <div class="tag-row">
+                            <span class="tag">Angular</span>
+                            <span class="tag">Kotlin</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/DianaKostadinova" class="proj-link" target="_blank" rel="noopener">GitHub →</a>
+                </div>
+
+                <div class="proj-item reveal">
+                    <div class="proj-meta">
+                        <span class="proj-num">04</span>
+                        <span class="proj-status done">Shipped</span>
+                    </div>
+                    <div class="proj-content">
+                        <h3>Discover Macedonia</h3>
+                        <p>Dynamic travel platform built with React and Firebase. Integrates the OpenAI API and Hugging Face AI models to deliver AI-powered destination guides and interactive experiences for exploring Macedonia.</p>
+                        <div class="tag-row">
+                            <span class="tag">React</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">OpenAI API</span>
+                            <span class="tag">TypeScript</span>
+                        </div>
+                    </div>
+                    <a href="https://discovermacedonia.vercel.app" class="proj-link" target="_blank" rel="noopener">Live →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research" class="section">
+        <div class="container">
+            <p class="sec-label">04 — Research</p>
+            <div class="pub-list">
+
+                <div class="pub-item reveal">
+                    <span class="pub-num">01</span>
+                    <div class="pub-content">
+                        <h3>Hybrid Embedding and Classification Framework for Landmark Recognition with Limited Data</h3>
+                        <p>Designed a hybrid metric-classification model for few-shot landmark recognition. Combined metric learning with a classification branch and aggressive data augmentation to handle extremely limited datasets (~30 images per class), achieving ~75% classification accuracy across Macedonian landmarks.</p>
+                        <div class="tag-row">
+                            <span class="tag">Python</span>
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Few-Shot Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pub-item reveal">
+                    <span class="pub-num">02</span>
+                    <div class="pub-content">
+                        <h3>Prompt-Based Annotation Framework for Large-Scale Visual Datasets</h3>
+                        <p>Co-authored research on an AI-assisted annotation platform built on the SAM3 foundation model. Specialized pipelines for medical imaging, industrial defect detection, and logo recognition consistently outperform the base model. Scalable microservice architecture with FastAPI, Spring Boot, Cloudflare R2, and PostgreSQL.</p>
+                        <div class="tag-row">
+                            <span class="tag">SAM3</span>
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+        <div class="container">
+            <p class="sec-label">05 — Skills</p>
+            <div class="skills-groups reveal">
+                <div class="skill-group">
+                    <h4>Frontend</h4>
+                    <div class="tag-row">
+                        <span class="tag">React</span>
+                        <span class="tag">Angular</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">CSS3</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Backend</h4>
+                    <div class="tag-row">
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Kotlin</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">C++</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>ML / AI</h4>
+                    <div class="tag-row">
+                        <span class="tag">Python</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">YOLOv8</span>
+                        <span class="tag">SAM3</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Data & Infra</h4>
+                    <div class="tag-row">
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Firebase</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Git</span>
+                        <span class="tag">Linux</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <h4>Mobile</h4>
+                    <div class="tag-row">
+                        <span class="tag">React Native</span>
+                        <span class="tag">Android</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="contact-inner reveal">
+                <p class="sec-label">06 — Contact</p>
+                <h2 class="contact-heading">Let's build something together.</h2>
+                <a class="contact-email" href="mailto:dkostadinova112@gmail.com">dkostadinova112@gmail.com →</a>
+                <div class="contact-links">
+                    <a href="https://github.com/DianaKostadinova" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://linkedin.com/in/diana-kostadinova-382a60364" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://instagram.com/dianakostadinovaa" target="_blank" rel="noopener">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container footer-inner">
+        <span>© 2026 Diana Kostadinova</span>
+        <span>Skopje, MK · 1st nationally · 2nd worldwide in Blindfolded Rubik's Cube</span>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
